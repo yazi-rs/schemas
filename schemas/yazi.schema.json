@@ -64,7 +64,6 @@
 							"use": {
 								"oneOf": [
 									{ "type": "array", "items": { "type": "string" } },
-
 									{ "type": "string" }
 								]
 							}

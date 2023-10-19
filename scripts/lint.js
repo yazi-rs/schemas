@@ -20,13 +20,13 @@ for (const [file, schema] of Object.entries(schemas)) {
 			`test/${file}`,
 		]);
 		console.log(
-			`${bgGreen(" SUCCESS ")} No issues found with ${file} and ${schema}`
+			`${bgGreen(" SUCCESS ")} No issues found with ${file} and ${schema}`,
 		);
 	} catch (error) {
 		console.log(
 			`${bgRed(" ERROR ")} Issue(s) found with ${file} and ${schema}: ${bold(
-				error.command
-			)}`
+				error.command,
+			)}`,
 		);
 		console.log(error.stderr);
 	}
