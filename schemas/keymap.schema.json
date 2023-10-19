@@ -26,7 +26,7 @@
 							},
 							"desc": { "type": "string" }
 						},
-						"required": ["on", "exec", "desc"]
+						"required": ["on", "exec"]
 					}
 				}
 			}
@@ -51,7 +51,7 @@
 							},
 							"desc": { "type": "string" }
 						},
-						"required": ["on", "exec", "desc"]
+						"required": ["on", "exec"]
 					}
 				}
 			}
@@ -76,7 +76,7 @@
 							},
 							"desc": { "type": "string" }
 						},
-						"required": ["on", "exec", "desc"]
+						"required": ["on", "exec"]
 					}
 				}
 			}
@@ -93,10 +93,15 @@
 								"type": "array",
 								"items": { "type": "string" }
 							},
-							"exec": { "type": "string" },
+							"exec": {
+								"oneOf": [
+									{ "type": "string" },
+									{ "type": "array", "items": { "type": "string" } }
+								]
+							},
 							"desc": { "type": "string" }
 						},
-						"required": ["on", "exec", "desc"]
+						"required": ["on", "exec"]
 					}
 				}
 			}
@@ -121,7 +126,7 @@
 							},
 							"desc": { "type": "string" }
 						},
-						"required": ["on", "exec", "desc"]
+						"required": ["on", "exec"]
 					}
 				}
 			}
