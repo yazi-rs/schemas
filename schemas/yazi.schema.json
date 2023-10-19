@@ -3,7 +3,7 @@
 	"type": "object",
 	"properties": {
 		"$schema": {
-			"default": "https://yazi-rs.github.io/docs/yazi.schema.json",
+			"default": "https://yazi-rs.github.io/schemas/yazi.schema.json",
 			"type": "string"
 		},
 		"manager": {
@@ -26,7 +26,8 @@
 				"sort_dir_first": { "type": "boolean" },
 				"show_hidden": { "type": "boolean" },
 				"show_symlink": { "type": "boolean" }
-			}
+			},
+			"additionalProperties": false
 		},
 		"preview": {
 			"type": "object",
@@ -35,7 +36,8 @@
 				"max_width": { "type": "integer", "minimum": 0 },
 				"max_height": { "type": "integer", "minimum": 0 },
 				"cache_dir": { "type": "string" }
-			}
+			},
+			"additionalProperties": false
 		},
 		"opener": {
 			"additionalProperties": {
@@ -69,10 +71,19 @@
 								]
 							}
 						},
-						"required": ["use"]
+						"required": ["use"],
+						"oneOf": [
+							{
+								"required": ["mime"]
+							},
+							{
+								"required": ["name"]
+							}
+						]
 					}
 				}
-			}
+			},
+			"additionalProperties": false
 		},
 		"tasks": {
 			"type": "object",
@@ -80,7 +91,8 @@
 				"micro_workers": { "type": "integer", "minimum": 0 },
 				"macro_workers": { "type": "integer", "minimum": 0 },
 				"bizarre_retry": { "type": "integer", "minimum": 0 }
-			}
+			},
+			"additionalProperties": false
 		},
 		"plugins": {
 			"type": "object",
@@ -89,13 +101,15 @@
 					"type": "array",
 					"items": { "type": "string" }
 				}
-			}
+			},
+			"additionalProperties": false
 		},
 		"log": {
 			"type": "object",
 			"properties": {
 				"enabled": { "type": "boolean" }
-			}
+			},
+			"additionalProperties": false
 		}
 	}
 }
