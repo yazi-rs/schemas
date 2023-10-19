@@ -1,0 +1,101 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+	"properties": {
+		"$schema": {
+			"default": "https://yazi-rs.github.io/docs/yazi.schema.json",
+			"type": "string"
+		},
+		"manager": {
+			"type": "object",
+			"properties": {
+				"layout": {
+					"type": "array",
+					"items": {
+						"type": "integer",
+						"minimum": 0,
+						"maximum": 8
+					},
+					"minItems": 3
+				},
+				"sort_by": {
+					"enum": ["alphabetical", "created", "modified", "natural", "size"]
+				},
+				"sort_sensitive": { "type": "boolean" },
+				"sort_reverse": { "type": "boolean" },
+				"sort_dir_first": { "type": "boolean" },
+				"show_hidden": { "type": "boolean" },
+				"show_symlink": { "type": "boolean" }
+			}
+		},
+		"preview": {
+			"type": "object",
+			"properties": {
+				"tab_size": { "type": "integer", "minimum": 0 },
+				"max_width": { "type": "integer", "minimum": 0 },
+				"max_height": { "type": "integer", "minimum": 0 },
+				"cache_dir": { "type": "string" }
+			}
+		},
+		"opener": {
+			"additionalProperties": {
+				"type": "array",
+				"items": {
+					"type": "object",
+					"properties": {
+						"exec": { "type": "string" },
+						"block": { "type": "boolean" },
+						"orphan": { "type": "boolean" },
+						"display_name": { "type": "string" }
+					},
+					"required": ["exec"]
+				}
+			}
+		},
+		"open": {
+			"properties": {
+				"rules": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"mime": { "type": "string" },
+							"name": { "type": "string" },
+							"use": {
+								"oneOf": [
+									{ "type": "array", "items": { "type": "string" } },
+
+									{ "type": "string" }
+								]
+							}
+						},
+						"required": ["use"]
+					}
+				}
+			}
+		},
+		"tasks": {
+			"type": "object",
+			"properties": {
+				"micro_workers": { "type": "integer", "minimum": 0 },
+				"macro_workers": { "type": "integer", "minimum": 0 },
+				"bizarre_retry": { "type": "integer", "minimum": 0 }
+			}
+		},
+		"plugins": {
+			"type": "object",
+			"properties": {
+				"preload": {
+					"type": "array",
+					"items": { "type": "string" }
+				}
+			}
+		},
+		"log": {
+			"type": "object",
+			"properties": {
+				"enabled": { "type": "boolean" }
+			}
+		}
+	}
+}
