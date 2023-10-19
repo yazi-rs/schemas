@@ -53,6 +53,7 @@
 			}
 		},
 		"open": {
+			"type": "object",
 			"properties": {
 				"rules": {
 					"type": "array",
