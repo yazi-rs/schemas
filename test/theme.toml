@@ -56,7 +56,7 @@ permissions_s = { fg = "darkgray" }
 border   = { fg = "blue" }
 title    = {}
 value    = {}
-selected = { fg = "black", bg = "white", a=true }
+selected = { fg = "black", bg = "white" }
 
 [select]
 border   = { fg = "blue" }
