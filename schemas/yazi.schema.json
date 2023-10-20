@@ -19,7 +19,14 @@
 					"minItems": 3
 				},
 				"sort_by": {
-					"enum": ["alphabetical", "created", "modified", "natural", "size"]
+					"enum": [
+						"none",
+						"alphabetical",
+						"created",
+						"modified",
+						"natural",
+						"size"
+					]
 				},
 				"sort_sensitive": { "type": "boolean" },
 				"sort_reverse": { "type": "boolean" },
