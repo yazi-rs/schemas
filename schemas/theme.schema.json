@@ -114,8 +114,18 @@
 					"type": "array",
 					"items": {
 						"type": "object",
-						"allOf": [{ "$ref": "#/$defs/style" }],
 						"properties": {
+							"fg": { "$ref": "#/$defs/color" },
+							"bg": { "$ref": "#/$defs/color" },
+							"bold": { "type": "boolean" },
+							"dim": { "type": "boolean" },
+							"italic": { "type": "boolean" },
+							"underline": { "type": "boolean" },
+							"blink": { "type": "boolean" },
+							"blink_rapid": { "type": "boolean" },
+							"reversed": { "type": "boolean" },
+							"hidden": { "type": "boolean" },
+							"crossed": { "type": "boolean" },
 							"mime": { "type": "string" },
 							"name": { "type": "string" }
 						},
@@ -127,7 +137,7 @@
 								"required": ["name"]
 							}
 						],
-						"unevaluatedProperties": false
+						"additionalProperties": false
 					}
 				}
 			},
