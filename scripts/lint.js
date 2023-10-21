@@ -9,6 +9,7 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const schemas = {
 	"yazi.toml": "yazi.schema.json",
 	"keymap.toml": "keymap.schema.json",
+	"theme.toml": "theme.schema.json",
 };
 
 for (const [file, schema] of Object.entries(schemas)) {
