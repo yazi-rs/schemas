@@ -31,6 +31,7 @@
 				"sort_sensitive": { "type": "boolean" },
 				"sort_reverse": { "type": "boolean" },
 				"sort_dir_first": { "type": "boolean" },
+				"linemode": { "enum": ["none", "size", "permissions", "mtime"] },
 				"show_hidden": { "type": "boolean" },
 				"show_symlink": { "type": "boolean" }
 			},
