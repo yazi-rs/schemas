@@ -96,10 +96,21 @@
 		"tasks": {
 			"type": "object",
 			"properties": {
-				"micro_workers": { "type": "integer", "minimum": 0 },
-				"macro_workers": { "type": "integer", "minimum": 0 },
-				"bizarre_retry": { "type": "integer", "minimum": 0 },
-				"suppress_preload": { "type": "boolean" }
+				"micro_workers": { "type": "integer", "minimum": 0, "maximum": 255 },
+				"macro_workers": { "type": "integer", "minimum": 0, "maximum": 255 },
+				"bizarre_retry": { "type": "integer", "minimum": 0, "maximum": 255 },
+				"suppress_preload": { "type": "boolean" },
+				"image_alloc": {
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 4294967295
+				},
+				"image_bound": {
+					"type": "array",
+					"items": { "type": "integer", "minimum": 0, "maximum": 65535 },
+					"minItems": 2,
+					"maxItems": 2
+				}
 			},
 			"additionalProperties": false
 		},
