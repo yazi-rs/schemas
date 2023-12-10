@@ -98,7 +98,8 @@
 			"properties": {
 				"micro_workers": { "type": "integer", "minimum": 0 },
 				"macro_workers": { "type": "integer", "minimum": 0 },
-				"bizarre_retry": { "type": "integer", "minimum": 0 }
+				"bizarre_retry": { "type": "integer", "minimum": 0 },
+				"suppress_preload": { "type": "boolean" }
 			},
 			"additionalProperties": false
 		},
