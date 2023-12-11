@@ -2,7 +2,7 @@ import { execa } from "execa";
 import { join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
-import { bgGreen, bgRed, bold } from "kleur/colors";
+import { green, red, bold, inverse } from "kleur/colors";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
@@ -21,13 +21,15 @@ for (const [file, schema] of Object.entries(schemas)) {
 			`test/${file}`,
 		]);
 		console.log(
-			`${bgGreen(" SUCCESS ")} No issues found with ${file} and ${schema}`,
+			`${bold(
+				inverse(green(" SUCCESS ")),
+			)} No issues found with ${file} and ${schema}`,
 		);
 	} catch (error) {
 		console.log(
-			`${bgRed(" ERROR ")} Issue(s) found with ${file} and ${schema}: ${bold(
-				error.command,
-			)}`,
+			`${bold(
+				inverse(red(" ERROR ")),
+			)} Issue(s) found with ${file} and ${schema}: ${bold(error.command)}`,
 		);
 		console.log(error.stderr);
 	}
