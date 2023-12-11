@@ -24,7 +24,7 @@
 				"marker_cut": { "$ref": "#/$defs/style" },
 				"tab_active": { "$ref": "#/$defs/style" },
 				"tab_inactive": { "$ref": "#/$defs/style" },
-				"tab_width": { "$ref": "#/$defs/u8" },
+				"tab_width": { "$ref": "/schemas/types/u8.json" },
 				"border_symbol": { "type": "string" },
 				"border_style": { "$ref": "#/$defs/style" },
 				"folder_offset": {
@@ -201,11 +201,6 @@
 			"items": { "type": "integer", "minimum": 0, "maximum": 1 },
 			"minItems": 4,
 			"maxItems": 4
-		},
-		"u8": {
-			"type": "integer",
-			"minimum": 0,
-			"maximum": 255
 		}
 	}
 }

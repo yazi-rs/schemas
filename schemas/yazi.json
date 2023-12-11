@@ -41,9 +41,9 @@
 		"preview": {
 			"type": "object",
 			"properties": {
-				"tab_size": { "$ref": "#/$defs/u8" },
-				"max_width": { "$ref": "#/$defs/u32" },
-				"max_height": { "$ref": "#/$defs/u32" },
+				"tab_size": { "$ref": "/schemas/types/u8.json" },
+				"max_width": { "$ref": "/schemas/types/u32.json" },
+				"max_height": { "$ref": "/schemas/types/u32.json" },
 				"cache_dir": { "type": "string" }
 			},
 			"additionalProperties": false
@@ -97,16 +97,16 @@
 		"tasks": {
 			"type": "object",
 			"properties": {
-				"micro_workers": { "$ref": "#/$defs/u8" },
-				"macro_workers": { "$ref": "#/$defs/u8" },
-				"bizarre_retry": { "$ref": "#/$defs/u8" },
+				"micro_workers": { "$ref": "/schemas/types/u8.json" },
+				"macro_workers": { "$ref": "/schemas/types/u8.json" },
+				"bizarre_retry": { "$ref": "/schemas/types/u8.json" },
 				"suppress_preload": { "type": "boolean" },
 				"image_alloc": {
-					"$ref": "#/$defs/u32"
+					"$ref": "/schemas/types/u32.json"
 				},
 				"image_bound": {
 					"type": "array",
-					"items": { "$ref": "#/$defs/u16" },
+					"items": { "$ref": "/schemas/types/u16.json" },
 					"minItems": 2,
 					"maxItems": 2
 				}
@@ -129,23 +129,6 @@
 				"enabled": { "type": "boolean" }
 			},
 			"additionalProperties": false
-		}
-	},
-	"$defs": {
-		"u8": {
-			"type": "integer",
-			"minimum": 0,
-			"maximum": 255
-		},
-		"u16": {
-			"type": "integer",
-			"minimum": 0,
-			"maximum": 65535
-		},
-		"u32": {
-			"type": "integer",
-			"minimum": 0,
-			"maximum": 4294967295
 		}
 	}
 }
