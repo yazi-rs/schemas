@@ -40,9 +40,9 @@
 		"preview": {
 			"type": "object",
 			"properties": {
-				"tab_size": { "type": "integer", "minimum": 0 },
-				"max_width": { "type": "integer", "minimum": 0 },
-				"max_height": { "type": "integer", "minimum": 0 },
+				"tab_size": { "$ref": "#/$defs/u8" },
+				"max_width": { "$ref": "#/$defs/u32" },
+				"max_height": { "$ref": "#/$defs/u32" },
 				"cache_dir": { "type": "string" }
 			},
 			"additionalProperties": false
@@ -96,18 +96,16 @@
 		"tasks": {
 			"type": "object",
 			"properties": {
-				"micro_workers": { "type": "integer", "minimum": 0, "maximum": 255 },
-				"macro_workers": { "type": "integer", "minimum": 0, "maximum": 255 },
-				"bizarre_retry": { "type": "integer", "minimum": 0, "maximum": 255 },
+				"micro_workers": { "$ref": "#/$defs/u8" },
+				"macro_workers": { "$ref": "#/$defs/u8" },
+				"bizarre_retry": { "$ref": "#/$defs/u8" },
 				"suppress_preload": { "type": "boolean" },
 				"image_alloc": {
-					"type": "integer",
-					"minimum": 0,
-					"maximum": 4294967295
+					"$ref": "#/$defs/u32"
 				},
 				"image_bound": {
 					"type": "array",
-					"items": { "type": "integer", "minimum": 0, "maximum": 65535 },
+					"items": { "$ref": "#/$defs/u16" },
 					"minItems": 2,
 					"maxItems": 2
 				}
@@ -130,6 +128,23 @@
 				"enabled": { "type": "boolean" }
 			},
 			"additionalProperties": false
+		}
+	},
+	"$defs": {
+		"u8": {
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 255
+		},
+		"u16": {
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 65535
+		},
+		"u32": {
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 4294967295
 		}
 	}
 }
