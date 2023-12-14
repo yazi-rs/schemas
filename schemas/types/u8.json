@@ -1,0 +1,7 @@
+{
+	"$id": "https://yazi-rs.github.io/schemas/types/u8.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "integer",
+	"minimum": 0,
+	"maximum": 255
+}
