@@ -2,6 +2,7 @@
 	"$id": "https://yazi-rs.github.io/schemas/keymap.json",
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"type": "object",
+	"additionalProperties": false,
 	"properties": {
 		"$schema": {
 			"default": "https://yazi-rs.github.io/schemas/keymap.schema.json",
@@ -29,6 +30,13 @@
 			"additionalProperties": false
 		},
 		"input": {
+			"type": "object",
+			"properties": {
+				"keymap": { "$ref": "#/$defs/keymap" }
+			},
+			"additionalProperties": false
+		},
+		"completion": {
 			"type": "object",
 			"properties": {
 				"keymap": { "$ref": "#/$defs/keymap" }
