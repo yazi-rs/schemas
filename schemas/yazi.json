@@ -161,7 +161,12 @@
 				"delete_offset": {
 					"$ref": "#/$defs/offset"
 				},
-				"find_title": { "type": "string" },
+				"find_title": {
+					"type": "array",
+					"items": { "type": "string" },
+					"minItems": 2,
+					"maxItems": 2
+				},
 				"find_origin": {
 					"$ref": "#/$defs/origin"
 				},
@@ -175,7 +180,12 @@
 				"search_offset": {
 					"$ref": "#/$defs/offset"
 				},
-				"shell_title": { "type": "string" },
+				"shell_title": {
+					"type": "array",
+					"items": { "type": "string" },
+					"minItems": 2,
+					"maxItems": 2
+				},
 				"shell_origin": {
 					"$ref": "#/$defs/origin"
 				},
