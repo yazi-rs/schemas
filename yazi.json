@@ -44,7 +44,18 @@
 				"tab_size": { "$ref": "/schemas/types/u8.json" },
 				"max_width": { "$ref": "/schemas/types/u32.json" },
 				"max_height": { "$ref": "/schemas/types/u32.json" },
-				"cache_dir": { "type": "string" }
+				"cache_dir": { "type": "string" },
+				"ueberzug_scale": { "type": "number", "minimum": 0 },
+				"ueberzug_offset": {
+					"type": "array",
+					"items": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 1
+					},
+					"minItems": 4,
+					"maxItems": 4
+				}
 			},
 			"additionalProperties": false
 		},
@@ -161,7 +172,12 @@
 				"delete_offset": {
 					"$ref": "#/$defs/offset"
 				},
-				"find_title": { "type": "string" },
+				"find_title": {
+					"type": "array",
+					"items": { "type": "string" },
+					"minItems": 2,
+					"maxItems": 2
+				},
 				"find_origin": {
 					"$ref": "#/$defs/origin"
 				},
@@ -175,7 +191,12 @@
 				"search_offset": {
 					"$ref": "#/$defs/offset"
 				},
-				"shell_title": { "type": "string" },
+				"shell_title": {
+					"type": "array",
+					"items": { "type": "string" },
+					"minItems": 2,
+					"maxItems": 2
+				},
 				"shell_origin": {
 					"$ref": "#/$defs/origin"
 				},
