@@ -1,0 +1,243 @@
+{
+	"$id": "https://yazi-rs.github.io/schemas/yazi.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"$schema": {
+			"default": "https://yazi-rs.github.io/schemas/yazi.schema.json",
+			"type": "string"
+		},
+		"manager": {
+			"type": "object",
+			"properties": {
+				"layout": {
+					"type": "array",
+					"items": {
+						"type": "integer",
+						"minimum": 0,
+						"maximum": 8
+					},
+					"minItems": 3
+				},
+				"sort_by": {
+					"enum": [
+						"none",
+						"alphabetical",
+						"created",
+						"modified",
+						"natural",
+						"size"
+					]
+				},
+				"sort_sensitive": { "type": "boolean" },
+				"sort_reverse": { "type": "boolean" },
+				"sort_dir_first": { "type": "boolean" },
+				"linemode": { "enum": ["none", "size", "permissions", "mtime"] },
+				"show_hidden": { "type": "boolean" },
+				"show_symlink": { "type": "boolean" }
+			},
+			"additionalProperties": false
+		},
+		"preview": {
+			"type": "object",
+			"properties": {
+				"tab_size": { "$ref": "/schemas/types/u8.json" },
+				"max_width": { "$ref": "/schemas/types/u32.json" },
+				"max_height": { "$ref": "/schemas/types/u32.json" },
+				"cache_dir": { "type": "string" }
+			},
+			"additionalProperties": false
+		},
+		"opener": {
+			"additionalProperties": {
+				"type": "array",
+				"items": {
+					"type": "object",
+					"properties": {
+						"exec": { "type": "string" },
+						"block": { "type": "boolean" },
+						"orphan": { "type": "boolean" },
+						"display_name": { "type": "string" }
+					},
+					"required": ["exec"]
+				}
+			}
+		},
+		"open": {
+			"type": "object",
+			"properties": {
+				"rules": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"mime": { "type": "string" },
+							"name": { "type": "string" },
+							"use": {
+								"oneOf": [
+									{ "type": "array", "items": { "type": "string" } },
+									{ "type": "string" }
+								]
+							}
+						},
+						"required": ["use"],
+						"oneOf": [
+							{
+								"required": ["mime"]
+							},
+							{
+								"required": ["name"]
+							}
+						]
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+		"tasks": {
+			"type": "object",
+			"properties": {
+				"micro_workers": { "$ref": "/schemas/types/u8.json" },
+				"macro_workers": { "$ref": "/schemas/types/u8.json" },
+				"bizarre_retry": { "$ref": "/schemas/types/u8.json" },
+				"suppress_preload": { "type": "boolean" },
+				"image_alloc": {
+					"$ref": "/schemas/types/u32.json"
+				},
+				"image_bound": {
+					"type": "array",
+					"items": { "$ref": "/schemas/types/u16.json" },
+					"minItems": 2,
+					"maxItems": 2
+				}
+			},
+			"additionalProperties": false
+		},
+		"plugins": {
+			"type": "object",
+			"properties": {
+				"preload": {
+					"type": "array",
+					"items": { "type": "string" }
+				}
+			},
+			"additionalProperties": false
+		},
+		"input": {
+			"type": "object",
+			"properties": {
+				"cd_title": { "type": "string" },
+				"cd_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"cd_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"create_title": { "type": "string" },
+				"create_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"create_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"rename_title": { "type": "string" },
+				"rename_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"rename_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"trash_title": { "type": "string" },
+				"trash_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"trash_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"delete_title": { "type": "string" },
+				"delete_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"delete_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"find_title": { "type": "string" },
+				"find_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"find_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"search_title": { "type": "string" },
+				"search_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"search_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"shell_title": { "type": "string" },
+				"shell_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"shell_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"overwrite_title": { "type": "string" },
+				"overwrite_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"overwrite_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"quit_title": { "type": "string" },
+				"quit_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"quit_offset": {
+					"$ref": "#/$defs/offset"
+				}
+			}
+		},
+		"select": {
+			"type": "object",
+			"properties": {
+				"open_title": { "type": "string" },
+				"open_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"open_offset": {
+					"$ref": "#/$defs/offset"
+				}
+			}
+		},
+		"log": {
+			"type": "object",
+			"properties": {
+				"enabled": { "type": "boolean" }
+			},
+			"additionalProperties": false
+		}
+	},
+	"$defs": {
+		"origin": {
+			"enum": [
+				"top-left",
+				"top-center",
+				"top-right",
+				"bottom-left",
+				"bottom-center",
+				"bottom-right",
+				"center",
+				"hovered"
+			]
+		},
+		"offset": {
+			"type": "array",
+			"items": {
+				"$ref": "/schemas/types/u16.json"
+			},
+			"minItems": 4,
+			"maxItems": 4
+		}
+	}
+}

@@ -1,0 +1,206 @@
+{
+	"$id": "https://yazi-rs.github.io/schemas/theme.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"$schema": {
+			"default": "https://yazi-rs.github.io/schemas/theme.schema.json",
+			"type": "string"
+		},
+		"manager": {
+			"type": "object",
+			"properties": {
+				"cwd": {
+					"$ref": "#/$defs/style"
+				},
+				"hovered": {
+					"$ref": "#/$defs/style"
+				},
+				"preview_hovered": { "$ref": "#/$defs/style" },
+				"find_keyword": { "$ref": "#/$defs/style" },
+				"find_position": { "$ref": "#/$defs/style" },
+				"marker_selected": { "$ref": "#/$defs/style" },
+				"marker_copied": { "$ref": "#/$defs/style" },
+				"marker_cut": { "$ref": "#/$defs/style" },
+				"tab_active": { "$ref": "#/$defs/style" },
+				"tab_inactive": { "$ref": "#/$defs/style" },
+				"tab_width": { "$ref": "/schemas/types/u8.json" },
+				"border_symbol": { "type": "string" },
+				"border_style": { "$ref": "#/$defs/style" },
+				"folder_offset": {
+					"$ref": "#/$defs/layout_offset"
+				},
+				"preview_offset": {
+					"$ref": "#/$defs/layout_offset"
+				},
+				"syntect_theme": { "type": "string" }
+			},
+			"additionalProperties": false
+		},
+		"status": {
+			"type": "object",
+			"properties": {
+				"separator_open": { "type": "string" },
+				"separator_close": { "type": "string" },
+				"separator_style": { "$ref": "#/$defs/style" },
+				"mode_normal": { "$ref": "#/$defs/style" },
+				"mode_select": { "$ref": "#/$defs/style" },
+				"mode_unset": { "$ref": "#/$defs/style" },
+				"progress_label": { "$ref": "#/$defs/style" },
+				"progress_normal": { "$ref": "#/$defs/style" },
+				"progress_error": { "$ref": "#/$defs/style" },
+				"permissions_t": { "$ref": "#/$defs/style" },
+				"permissions_r": { "$ref": "#/$defs/style" },
+				"permissions_w": { "$ref": "#/$defs/style" },
+				"permissions_x": { "$ref": "#/$defs/style" },
+				"permissions_s": { "$ref": "#/$defs/style" }
+			},
+			"additionalProperties": false
+		},
+		"input": {
+			"type": "object",
+			"properties": {
+				"border": { "$ref": "#/$defs/style" },
+				"title": { "$ref": "#/$defs/style" },
+				"value": { "$ref": "#/$defs/style" },
+				"selected": { "$ref": "#/$defs/style" }
+			},
+			"additionalProperties": false
+		},
+		"select": {
+			"type": "object",
+			"properties": {
+				"border": { "$ref": "#/$defs/style" },
+				"active": { "$ref": "#/$defs/style" },
+				"inactive": { "$ref": "#/$defs/style" }
+			},
+			"additionalProperties": false
+		},
+		"tasks": {
+			"type": "object",
+			"properties": {
+				"border": { "$ref": "#/$defs/style" },
+				"title": { "$ref": "#/$defs/style" },
+				"hovered": { "$ref": "#/$defs/style" }
+			},
+			"additionalProperties": false
+		},
+		"which": {
+			"type": "object",
+			"properties": {
+				"mask": { "$ref": "#/$defs/style" },
+				"cand": { "$ref": "#/$defs/style" },
+				"rest": { "$ref": "#/$defs/style" },
+				"desc": { "$ref": "#/$defs/style" },
+				"separator": { "type": "string" },
+				"separator_style": { "$ref": "#/$defs/style" }
+			},
+			"additionalProperties": false
+		},
+		"help": {
+			"type": "object",
+			"properties": {
+				"on": { "$ref": "#/$defs/style" },
+				"exec": { "$ref": "#/$defs/style" },
+				"desc": { "$ref": "#/$defs/style" },
+				"hovered": { "$ref": "#/$defs/style" },
+				"footer": { "$ref": "#/$defs/style" }
+			},
+			"additionalProperties": false
+		},
+		"filetype": {
+			"type": "object",
+			"properties": {
+				"rules": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"fg": { "$ref": "#/$defs/color" },
+							"bg": { "$ref": "#/$defs/color" },
+							"bold": { "type": "boolean" },
+							"dim": { "type": "boolean" },
+							"italic": { "type": "boolean" },
+							"underline": { "type": "boolean" },
+							"blink": { "type": "boolean" },
+							"blink_rapid": { "type": "boolean" },
+							"reversed": { "type": "boolean" },
+							"hidden": { "type": "boolean" },
+							"crossed": { "type": "boolean" },
+							"mime": { "type": "string" },
+							"name": { "type": "string" }
+						},
+						"oneOf": [
+							{
+								"required": ["mime"]
+							},
+							{
+								"required": ["name"]
+							}
+						],
+						"additionalProperties": false
+					}
+				}
+			},
+			"additionalProperties": false
+		},
+		"icons": {
+			"additionalProperties": {
+				"type": "string"
+			}
+		}
+	},
+	"$defs": {
+		"color": {
+			"oneOf": [
+				{
+					"type": "string",
+					"pattern": "^#([0-9A-Fa-f]{6})$"
+				},
+				{
+					"enum": [
+						"reset",
+						"black",
+						"white",
+						"red",
+						"lightred",
+						"green",
+						"lightgreen",
+						"yellow",
+						"lightyellow",
+						"blue",
+						"lightblue",
+						"magenta",
+						"lightmagenta",
+						"cyan",
+						"lightcyan",
+						"gray",
+						"darkgray"
+					]
+				}
+			]
+		},
+		"style": {
+			"type": "object",
+			"properties": {
+				"fg": { "$ref": "#/$defs/color" },
+				"bg": { "$ref": "#/$defs/color" },
+				"bold": { "type": "boolean" },
+				"dim": { "type": "boolean" },
+				"italic": { "type": "boolean" },
+				"underline": { "type": "boolean" },
+				"blink": { "type": "boolean" },
+				"blink_rapid": { "type": "boolean" },
+				"reversed": { "type": "boolean" },
+				"hidden": { "type": "boolean" },
+				"crossed": { "type": "boolean" }
+			}
+		},
+		"layout_offset": {
+			"type": "array",
+			"items": { "type": "integer", "minimum": 0, "maximum": 1 },
+			"minItems": 4,
+			"maxItems": 4
+		}
+	}
+}

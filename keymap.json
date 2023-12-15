@@ -1,0 +1,68 @@
+{
+	"$id": "https://yazi-rs.github.io/schemas/keymap.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"type": "object",
+	"properties": {
+		"$schema": {
+			"default": "https://yazi-rs.github.io/schemas/keymap.schema.json",
+			"type": "string"
+		},
+		"manager": {
+			"type": "object",
+			"properties": {
+				"keymap": { "$ref": "#/$defs/keymap" }
+			},
+			"additionalProperties": false
+		},
+		"tasks": {
+			"type": "object",
+			"properties": {
+				"keymap": { "$ref": "#/$defs/keymap" }
+			},
+			"additionalProperties": false
+		},
+		"select": {
+			"type": "object",
+			"properties": {
+				"keymap": { "$ref": "#/$defs/keymap" }
+			},
+			"additionalProperties": false
+		},
+		"input": {
+			"type": "object",
+			"properties": {
+				"keymap": { "$ref": "#/$defs/keymap" }
+			},
+			"additionalProperties": false
+		},
+		"help": {
+			"type": "object",
+			"properties": {
+				"keymap": { "$ref": "#/$defs/keymap" }
+			},
+			"additionalProperties": false
+		}
+	},
+	"$defs": {
+		"keymap": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"on": {
+						"type": "array",
+						"items": { "type": "string" }
+					},
+					"exec": {
+						"oneOf": [
+							{ "type": "string" },
+							{ "type": "array", "items": { "type": "string" } }
+						]
+					},
+					"desc": { "type": "string" }
+				},
+				"required": ["on", "exec"]
+			}
+		}
+	}
+}
