@@ -255,9 +255,13 @@
 		},
 		"offset": {
 			"type": "array",
-			"items": {
-				"$ref": "/schemas/types/u16.json"
-			},
+			"items": false,
+			"prefixItems": [
+				{ "$ref": "/schemas/types/i16.json" },
+				{ "$ref": "/schemas/types/i16.json" },
+				{ "$ref": "/schemas/types/u16.json" },
+				{ "$ref": "/schemas/types/u16.json" }
+			],
 			"minItems": 4,
 			"maxItems": 4
 		}
