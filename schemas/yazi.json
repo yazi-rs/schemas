@@ -44,7 +44,18 @@
 				"tab_size": { "$ref": "/schemas/types/u8.json" },
 				"max_width": { "$ref": "/schemas/types/u32.json" },
 				"max_height": { "$ref": "/schemas/types/u32.json" },
-				"cache_dir": { "type": "string" }
+				"cache_dir": { "type": "string" },
+				"ueberzug_scale": { "type": "number", "minimum": 0 },
+				"ueberzug_offset": {
+					"type": "array",
+					"items": {
+						"type": "number",
+						"minimum": 0,
+						"maximum": 1
+					},
+					"minItems": 4,
+					"maxItems": 4
+				}
 			},
 			"additionalProperties": false
 		},
