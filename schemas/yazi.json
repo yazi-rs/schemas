@@ -123,12 +123,121 @@
 			},
 			"additionalProperties": false
 		},
+		"input": {
+			"type": "object",
+			"properties": {
+				"cd_title": { "type": "string" },
+				"cd_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"cd_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"create_title": { "type": "string" },
+				"create_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"create_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"rename_title": { "type": "string" },
+				"rename_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"rename_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"trash_title": { "type": "string" },
+				"trash_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"trash_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"delete_title": { "type": "string" },
+				"delete_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"delete_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"find_title": { "type": "string" },
+				"find_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"find_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"search_title": { "type": "string" },
+				"search_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"search_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"shell_title": { "type": "string" },
+				"shell_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"shell_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"overwrite_title": { "type": "string" },
+				"overwrite_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"overwrite_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"quit_title": { "type": "string" },
+				"quit_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"quit_offset": {
+					"$ref": "#/$defs/offset"
+				}
+			}
+		},
+		"select": {
+			"type": "object",
+			"properties": {
+				"open_title": { "type": "string" },
+				"open_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"open_offset": {
+					"$ref": "#/$defs/offset"
+				}
+			}
+		},
 		"log": {
 			"type": "object",
 			"properties": {
 				"enabled": { "type": "boolean" }
 			},
 			"additionalProperties": false
+		}
+	},
+	"$defs": {
+		"origin": {
+			"enum": [
+				"top-left",
+				"top-center",
+				"top-right",
+				"bottom-left",
+				"bottom-center",
+				"bottom-right",
+				"center",
+				"hovered"
+			]
+		},
+		"offset": {
+			"type": "array",
+			"items": {
+				"$ref": "/schemas/types/u16.json"
+			},
+			"minItems": 4,
+			"maxItems": 4
 		}
 	}
 }
