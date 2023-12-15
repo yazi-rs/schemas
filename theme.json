@@ -2,6 +2,7 @@
 	"$id": "https://yazi-rs.github.io/schemas/theme.json",
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"type": "object",
+	"additionalProperties": false,
 	"properties": {
 		"$schema": {
 			"default": "https://yazi-rs.github.io/schemas/theme.schema.json",
@@ -73,6 +74,18 @@
 				"border": { "$ref": "#/$defs/style" },
 				"active": { "$ref": "#/$defs/style" },
 				"inactive": { "$ref": "#/$defs/style" }
+			},
+			"additionalProperties": false
+		},
+		"completion": {
+			"type": "object",
+			"properties": {
+				"border": { "$ref": "#/$defs/style" },
+				"active": { "$ref": "#/$defs/style" },
+				"inactive": { "$ref": "#/$defs/style" },
+				"icon_file": { "type": "string" },
+				"icon_folder": { "type": "string" },
+				"icon_command": { "type": "string" }
 			},
 			"additionalProperties": false
 		},
