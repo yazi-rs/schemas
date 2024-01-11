@@ -1,0 +1,3 @@
+[submodule "yazi"]
+	path = yazi
+	url = https://github.com/sxyazi/yazi.git
