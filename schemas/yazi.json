@@ -11,7 +11,7 @@
 		"manager": {
 			"type": "object",
 			"properties": {
-				"layout": {
+				"ratio": {
 					"type": "array",
 					"items": {
 						"type": "integer",
@@ -125,12 +125,56 @@
 			},
 			"additionalProperties": false
 		},
-		"plugins": {
+		"plugin": {
 			"type": "object",
 			"properties": {
-				"preload": {
+				"preloaders": {
 					"type": "array",
-					"items": { "type": "string" }
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": { "type": "string" },
+							"mime": { "type": "string" },
+							"exec": { "type": "string" },
+							"cond": { "type": "string" },
+							"multi": { "type": "boolean" },
+							"sync": { "type": "boolean" },
+							"prio": { "enum": ["low", "normal", "high"] }
+						},
+						"required": ["exec"],
+						"oneOf": [
+							{
+								"required": ["mime"]
+							},
+							{
+								"required": ["name"]
+							}
+						]
+					}
+				},
+				"previewers": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": { "type": "string" },
+							"mime": { "type": "string" },
+							"exec": { "type": "string" },
+							"cond": { "type": "string" },
+							"multi": { "type": "boolean" },
+							"sync": { "type": "boolean" },
+							"prio": { "enum": ["low", "normal", "high"] }
+						},
+						"required": ["exec"],
+						"oneOf": [
+							{
+								"required": ["mime"]
+							},
+							{
+								"required": ["name"]
+							}
+						]
+					}
 				}
 			},
 			"additionalProperties": false
