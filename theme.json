@@ -157,9 +157,19 @@
 			},
 			"additionalProperties": false
 		},
-		"icons": {
-			"additionalProperties": {
-				"type": "string"
+		"icon": {
+			"type": "object",
+			"properties": {
+				"rules": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": { "type": "string" },
+							"text": { "type": "string" }
+						}
+					}
+				}
 			}
 		}
 	},
