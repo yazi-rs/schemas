@@ -173,6 +173,13 @@
 				"delete_offset": {
 					"$ref": "#/$defs/offset"
 				},
+				"filter_title": { "type": "string" },
+				"filter_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"filter_offset": {
+					"$ref": "#/$defs/offset"
+				},
 				"find_title": {
 					"type": "array",
 					"items": { "type": "string" },
