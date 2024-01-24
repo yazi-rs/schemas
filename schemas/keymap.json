@@ -11,42 +11,54 @@
 		"manager": {
 			"type": "object",
 			"properties": {
-				"keymap": { "$ref": "#/$defs/keymap" }
+				"keymap": { "$ref": "#/$defs/keymap" },
+				"prepend_keymap": { "$ref": "#/$defs/keymap" },
+				"append_keymap": { "$ref": "#/$defs/keymap" }
 			},
 			"additionalProperties": false
 		},
 		"tasks": {
 			"type": "object",
 			"properties": {
-				"keymap": { "$ref": "#/$defs/keymap" }
+				"keymap": { "$ref": "#/$defs/keymap" },
+				"prepend_keymap": { "$ref": "#/$defs/keymap" },
+				"append_keymap": { "$ref": "#/$defs/keymap" }
 			},
 			"additionalProperties": false
 		},
 		"select": {
 			"type": "object",
 			"properties": {
-				"keymap": { "$ref": "#/$defs/keymap" }
+				"keymap": { "$ref": "#/$defs/keymap" },
+				"prepend_keymap": { "$ref": "#/$defs/keymap" },
+				"append_keymap": { "$ref": "#/$defs/keymap" }
 			},
 			"additionalProperties": false
 		},
 		"input": {
 			"type": "object",
 			"properties": {
-				"keymap": { "$ref": "#/$defs/keymap" }
+				"keymap": { "$ref": "#/$defs/keymap" },
+				"prepend_keymap": { "$ref": "#/$defs/keymap" },
+				"append_keymap": { "$ref": "#/$defs/keymap" }
 			},
 			"additionalProperties": false
 		},
 		"completion": {
 			"type": "object",
 			"properties": {
-				"keymap": { "$ref": "#/$defs/keymap" }
+				"keymap": { "$ref": "#/$defs/keymap" },
+				"prepend_keymap": { "$ref": "#/$defs/keymap" },
+				"append_keymap": { "$ref": "#/$defs/keymap" }
 			},
 			"additionalProperties": false
 		},
 		"help": {
 			"type": "object",
 			"properties": {
-				"keymap": { "$ref": "#/$defs/keymap" }
+				"keymap": { "$ref": "#/$defs/keymap" },
+				"prepend_keymap": { "$ref": "#/$defs/keymap" },
+				"append_keymap": { "$ref": "#/$defs/keymap" }
 			},
 			"additionalProperties": false
 		}

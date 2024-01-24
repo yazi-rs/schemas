@@ -1,3 +1,7 @@
+# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
+# If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
+"$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
+
 [manager]
 
 keymap = [
@@ -67,7 +71,7 @@ keymap = [
 	{ on = [ "d" ],         exec = [ "remove", "escape --visual --select" ],               desc = "Move the files to the trash" },
 	{ on = [ "D" ],         exec = [ "remove --permanently", "escape --visual --select" ], desc = "Permanently delete the files" },
 	{ on = [ "a" ],         exec = "create",                                               desc = "Create a file or directory (ends with / for directories)" },
-	{ on = [ "r" ],         exec = "rename",                                               desc = "Rename a file or directory" },
+	{ on = [ "r" ],         exec = "rename --cursor=before_ext",                           desc = "Rename a file or directory" },
 	{ on = [ ";" ],         exec = "shell",                                                desc = "Run a shell command" },
 	{ on = [ ":" ],         exec = "shell --block",                                        desc = "Run a shell command (block the UI until the command finishes)" },
 	{ on = [ "." ],         exec = "hidden toggle",                                        desc = "Toggle the visibility of hidden files" },
@@ -254,8 +258,9 @@ keymap = [
 [completion]
 
 keymap = [
-	{ on = [ "<C-q>" ], exec = "close",          desc = "Cancel completion" },
-	{ on = [ "<Tab>" ], exec = "close --submit", desc = "Submit the completion" },
+	{ on = [ "<C-q>" ],   exec = "close",                                      desc = "Cancel completion" },
+	{ on = [ "<Tab>" ],   exec = "close --submit",                             desc = "Submit the completion" },
+	{ on = [ "<Enter>" ], exec = [ "close --submit", "close_input --submit" ], desc = "Submit the completion and input" },
 
 	{ on = [ "<A-k>" ], exec = "arrow -1", desc = "Move cursor up" },
 	{ on = [ "<A-j>" ], exec = "arrow 1",  desc = "Move cursor down" },

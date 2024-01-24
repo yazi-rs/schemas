@@ -1,3 +1,7 @@
+# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
+# If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
+"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+
 [manager]
 ratio          = [ 1, 4, 3 ]
 sort_by        = "modified"
@@ -22,13 +26,13 @@ edit = [
 	{ exec = 'code "%*"',    orphan = true, for = "windows" },
 ]
 open = [
-	{ exec = 'xdg-open "$@"',             desc = "Open", for = "linux" },
-	{ exec = 'open "$@"',                 desc = "Open", for = "macos" },
-	{ exec = 'start "%1"', orphan = true, desc = "Open", for = "windows" }
+	{ exec = 'xdg-open "$@"',                desc = "Open", for = "linux" },
+	{ exec = 'open "$@"',                    desc = "Open", for = "macos" },
+	{ exec = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" }
 ]
 reveal = [
-	{ exec = 'open -R "$1"',                       desc = "Reveal", for = "macos" },
-	{ exec = 'explorer /select,%1', orphan = true, desc = "Reveal", for = "windows" },
+	{ exec = 'open -R "$1"',                          desc = "Reveal", for = "macos" },
+	{ exec = 'explorer /select, "%1"', orphan = true, desc = "Reveal", for = "windows" },
 	{ exec = '''exiftool "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 extract = [
@@ -67,8 +71,8 @@ rules = [
 ]
 
 [tasks]
-micro_workers    = 5
-macro_workers    = 10
+micro_workers    = 10
+macro_workers    = 25
 bizarre_retry    = 5
 image_alloc      = 536870912  # 512MB
 image_bound      = [ 0, 0 ]
@@ -111,6 +115,8 @@ previewers = [
 	{ mime = "application/x-7z-compressed", exec = "archive" },
 	{ mime = "application/x-rar",           exec = "archive" },
 	{ mime = "application/xz",              exec = "archive" },
+	# Fallback
+	{ name = "*", exec = "file" },
 ]
 
 [input]
@@ -150,7 +156,7 @@ find_origin = "top-center"
 find_offset = [ 0, 2, 50, 3 ]
 
 # search
-search_title  = "Search:"
+search_title  = "Search via {n}:"
 search_origin = "top-center"
 search_offset = [ 0, 2, 50, 3 ]
 
