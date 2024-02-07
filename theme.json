@@ -101,6 +101,7 @@
 		"which": {
 			"type": "object",
 			"properties": {
+				"cols": { "type": "integer", "minimum": 1, "maximum": 3 },
 				"mask": { "$ref": "#/$defs/style" },
 				"cand": { "$ref": "#/$defs/style" },
 				"rest": { "$ref": "#/$defs/style" },

@@ -46,6 +46,11 @@
 				"max_width": { "$ref": "/schemas/types/u32.json" },
 				"max_height": { "$ref": "/schemas/types/u32.json" },
 				"cache_dir": { "type": "string" },
+				"image_filter": {
+					"enum": ["nearest", "triangle", "catmull-rom", "lanczos3"]
+				},
+				"image_quality": { "type": "integer", "minimum": 50, "maximum": 90 },
+				"sixel_fraction": { "type": "integer", "minimum": 10, "maximum": 20 },
 				"ueberzug_scale": { "type": "number", "minimum": 0 },
 				"ueberzug_offset": {
 					"type": "array",
