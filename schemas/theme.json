@@ -122,6 +122,18 @@
 			},
 			"additionalProperties": false
 		},
+		"notify": {
+			"type": "object",
+			"properties": {
+				"title_info": { "type": "string" },
+				"title_warn": { "type": "string" },
+				"title_error": { "type": "string" },
+				"icon_info": { "$ref": "#/$defs/style" },
+				"icon_warn": { "$ref": "#/$defs/style" },
+				"icon_error": { "$ref": "#/$defs/style" }
+			},
+			"additionalProperties": false
+		},
 		"filetype": {
 			"type": "object",
 			"properties": {
