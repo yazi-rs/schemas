@@ -73,11 +73,12 @@
 					"type": "object",
 					"properties": {
 						"run": { "type": "string" },
+						"exec": { "type": "string" },
 						"block": { "type": "boolean" },
 						"orphan": { "type": "boolean" },
 						"display_name": { "type": "string" }
 					},
-					"required": ["run"]
+					"oneOf": [{ "required": ["run"] }, { "required": ["exec"] }]
 				}
 			}
 		},
@@ -142,18 +143,24 @@
 							"name": { "type": "string" },
 							"mime": { "type": "string" },
 							"run": { "type": "string" },
+							"exec": { "type": "string" },
 							"cond": { "type": "string" },
 							"multi": { "type": "boolean" },
 							"sync": { "type": "boolean" },
 							"prio": { "enum": ["low", "normal", "high"] }
 						},
-						"required": ["run"],
 						"oneOf": [
 							{
-								"required": ["mime"]
+								"required": ["mime", "run"]
 							},
 							{
-								"required": ["name"]
+								"required": ["name", "run"]
+							},
+							{
+								"required": ["mime", "exec"]
+							},
+							{
+								"required": ["name", "exec"]
 							}
 						]
 					}
@@ -166,18 +173,24 @@
 							"name": { "type": "string" },
 							"mime": { "type": "string" },
 							"run": { "type": "string" },
+							"exec": { "type": "string" },
 							"cond": { "type": "string" },
 							"multi": { "type": "boolean" },
 							"sync": { "type": "boolean" },
 							"prio": { "enum": ["low", "normal", "high"] }
 						},
-						"required": ["run"],
 						"oneOf": [
 							{
-								"required": ["mime"]
+								"required": ["mime", "run"]
 							},
 							{
-								"required": ["name"]
+								"required": ["name", "run"]
+							},
+							{
+								"required": ["mime", "exec"]
+							},
+							{
+								"required": ["name", "exec"]
 							}
 						]
 					}

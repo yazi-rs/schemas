@@ -127,6 +127,7 @@
 			"properties": {
 				"on": { "$ref": "#/$defs/style" },
 				"run": { "$ref": "#/$defs/style" },
+				"exec": { "$ref": "#/$defs/style" },
 				"desc": { "$ref": "#/$defs/style" },
 				"hovered": { "$ref": "#/$defs/style" },
 				"footer": { "$ref": "#/$defs/style" }
