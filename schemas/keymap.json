@@ -79,9 +79,15 @@
 							{ "type": "array", "items": { "type": "string" } }
 						]
 					},
+					"exec": {
+						"oneOf": [
+							{ "type": "string" },
+							{ "type": "array", "items": { "type": "string" } }
+						]
+					},
 					"desc": { "type": "string" }
 				},
-				"required": ["on", "run"]
+				"oneOf": [{ "required": ["on", "run"] }, { "required": ["on", "exec"] }]
 			}
 		}
 	}
