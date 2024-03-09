@@ -35,7 +35,8 @@
 				"sort_dir_first": { "type": "boolean" },
 				"linemode": { "enum": ["none", "size", "permissions", "mtime"] },
 				"show_hidden": { "type": "boolean" },
-				"show_symlink": { "type": "boolean" }
+				"show_symlink": { "type": "boolean" },
+				"scrolloff": { "$ref": "/schemas/types/u8.json" }
 			},
 			"additionalProperties": false
 		},
@@ -71,12 +72,12 @@
 				"items": {
 					"type": "object",
 					"properties": {
-						"exec": { "type": "string" },
+						"run": { "type": "string" },
 						"block": { "type": "boolean" },
 						"orphan": { "type": "boolean" },
 						"display_name": { "type": "string" }
 					},
-					"required": ["exec"]
+					"required": ["run"]
 				}
 			}
 		},
@@ -140,13 +141,13 @@
 						"properties": {
 							"name": { "type": "string" },
 							"mime": { "type": "string" },
-							"exec": { "type": "string" },
+							"run": { "type": "string" },
 							"cond": { "type": "string" },
 							"multi": { "type": "boolean" },
 							"sync": { "type": "boolean" },
 							"prio": { "enum": ["low", "normal", "high"] }
 						},
-						"required": ["exec"],
+						"required": ["run"],
 						"oneOf": [
 							{
 								"required": ["mime"]
@@ -164,13 +165,13 @@
 						"properties": {
 							"name": { "type": "string" },
 							"mime": { "type": "string" },
-							"exec": { "type": "string" },
+							"run": { "type": "string" },
 							"cond": { "type": "string" },
 							"multi": { "type": "boolean" },
 							"sync": { "type": "boolean" },
 							"prio": { "enum": ["low", "normal", "high"] }
 						},
-						"required": ["exec"],
+						"required": ["run"],
 						"oneOf": [
 							{
 								"required": ["mime"]
@@ -288,10 +289,25 @@
 				}
 			}
 		},
+		"which": {
+			"type": "object",
+			"properties": {
+				"sort_by": { "enum": ["none", "key", "desc"] },
+				"sort_sensitive": { "type": "boolean" },
+				"sort_reverse": { "type": "boolean" }
+			}
+		},
 		"log": {
 			"type": "object",
 			"properties": {
 				"enabled": { "type": "boolean" }
+			},
+			"additionalProperties": false
+		},
+		"headsup": {
+			"type": "object",
+			"properties": {
+				"disable_exec_warn": { "type": "boolean" }
 			},
 			"additionalProperties": false
 		}
