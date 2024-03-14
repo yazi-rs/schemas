@@ -135,66 +135,12 @@
 		"plugin": {
 			"type": "object",
 			"properties": {
-				"preloaders": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"name": { "type": "string" },
-							"mime": { "type": "string" },
-							"run": { "type": "string" },
-							"exec": { "type": "string" },
-							"cond": { "type": "string" },
-							"multi": { "type": "boolean" },
-							"sync": { "type": "boolean" },
-							"prio": { "enum": ["low", "normal", "high"] }
-						},
-						"oneOf": [
-							{
-								"required": ["mime", "run"]
-							},
-							{
-								"required": ["name", "run"]
-							},
-							{
-								"required": ["mime", "exec"]
-							},
-							{
-								"required": ["name", "exec"]
-							}
-						]
-					}
-				},
-				"previewers": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"name": { "type": "string" },
-							"mime": { "type": "string" },
-							"run": { "type": "string" },
-							"exec": { "type": "string" },
-							"cond": { "type": "string" },
-							"multi": { "type": "boolean" },
-							"sync": { "type": "boolean" },
-							"prio": { "enum": ["low", "normal", "high"] }
-						},
-						"oneOf": [
-							{
-								"required": ["mime", "run"]
-							},
-							{
-								"required": ["name", "run"]
-							},
-							{
-								"required": ["mime", "exec"]
-							},
-							{
-								"required": ["name", "exec"]
-							}
-						]
-					}
-				}
+				"preloaders": { "$ref": "#/$defs/preloaders" },
+				"prepend_preloaders": { "$ref": "#/$defs/preloaders" },
+				"append_preloaders": { "$ref": "#/$defs/preloaders" },
+				"previewers": { "$ref": "#/$defs/previewers" },
+				"prepend_previewers": { "$ref": "#/$defs/previewers" },
+				"append_previewers": { "$ref": "#/$defs/previewers" }
 			},
 			"additionalProperties": false
 		},
@@ -345,6 +291,66 @@
 			},
 			"minItems": 4,
 			"maxItems": 4
+		},
+		"preloaders": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": { "type": "string" },
+					"mime": { "type": "string" },
+					"run": { "type": "string" },
+					"exec": { "type": "string" },
+					"cond": { "type": "string" },
+					"multi": { "type": "boolean" },
+					"sync": { "type": "boolean" },
+					"prio": { "enum": ["low", "normal", "high"] }
+				},
+				"oneOf": [
+					{
+						"required": ["mime", "run"]
+					},
+					{
+						"required": ["name", "run"]
+					},
+					{
+						"required": ["mime", "exec"]
+					},
+					{
+						"required": ["name", "exec"]
+					}
+				]
+			}
+		},
+		"previewers": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": { "type": "string" },
+					"mime": { "type": "string" },
+					"run": { "type": "string" },
+					"exec": { "type": "string" },
+					"cond": { "type": "string" },
+					"multi": { "type": "boolean" },
+					"sync": { "type": "boolean" },
+					"prio": { "enum": ["low", "normal", "high"] }
+				},
+				"oneOf": [
+					{
+						"required": ["mime", "run"]
+					},
+					{
+						"required": ["name", "run"]
+					},
+					{
+						"required": ["mime", "exec"]
+					},
+					{
+						"required": ["name", "exec"]
+					}
+				]
+			}
 		}
 	}
 }
