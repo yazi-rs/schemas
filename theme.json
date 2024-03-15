@@ -39,12 +39,6 @@
 				"count_selected": { "$ref": "#/$defs/style" },
 				"border_symbol": { "type": "string" },
 				"border_style": { "$ref": "#/$defs/style" },
-				"folder_offset": {
-					"$ref": "#/$defs/layout_offset"
-				},
-				"preview_offset": {
-					"$ref": "#/$defs/layout_offset"
-				},
 				"syntect_theme": { "type": "string" }
 			},
 			"additionalProperties": false
@@ -185,18 +179,9 @@
 		"icon": {
 			"type": "object",
 			"properties": {
-				"rules": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"name": { "type": "string" },
-							"text": { "type": "string" },
-							"fg": { "$ref": "#/$defs/color" }
-						},
-						"required": ["name", "text"]
-					}
-				}
+				"rules": { "$ref": "#/$defs/icon_rules" },
+				"prepend_rules": { "$ref": "#/$defs/icon_rules" },
+				"append_rules": { "$ref": "#/$defs/icon_rules" }
 			}
 		}
 	},
@@ -246,11 +231,17 @@
 				"crossed": { "type": "boolean" }
 			}
 		},
-		"layout_offset": {
+		"icon_rules": {
 			"type": "array",
-			"items": { "type": "integer", "minimum": 0, "maximum": 1 },
-			"minItems": 4,
-			"maxItems": 4
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": { "type": "string" },
+					"text": { "type": "string" },
+					"fg": { "$ref": "#/$defs/color" }
+				},
+				"required": ["name", "text"]
+			}
 		}
 	}
 }
