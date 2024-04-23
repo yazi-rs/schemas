@@ -27,8 +27,8 @@ find_position = { fg = "magenta", bg = "reset", bold = true, italic = true }
 # Marker
 marker_copied   = { fg = "lightgreen",  bg = "lightgreen" }
 marker_cut      = { fg = "lightred",    bg = "lightred" }
-marker_marked   = { fg = "lightyellow", bg = "lightyellow" }
-marker_selected = { fg = "lightblue",   bg = "lightblue" }
+marker_marked   = { fg = "lightcyan",   bg = "lightcyan" }
+marker_selected = { fg = "lightyellow", bg = "lightyellow" }
 
 # Tab
 tab_active   = { reversed = true }
@@ -38,7 +38,7 @@ tab_width    = 1
 # Count
 count_copied   = { fg = "white", bg = "green" }
 count_cut      = { fg = "white", bg = "red" }
-count_selected = { fg = "white", bg = "blue" }
+count_selected = { fg = "white", bg = "yellow" }
 
 # Border
 border_symbol = "│"
@@ -173,24 +173,14 @@ rules = [
 	{ mime = "image/*", fg = "cyan" },
 
 	# Media
-	{ mime = "video/*", fg = "yellow" },
-	{ mime = "audio/*", fg = "yellow" },
+	{ mime = "{audio,video}/*", fg = "yellow" },
 
 	# Archives
-	{ mime = "application/zip",             fg = "magenta" },
-	{ mime = "application/gzip",            fg = "magenta" },
-	{ mime = "application/x-tar",           fg = "magenta" },
-	{ mime = "application/x-bzip",          fg = "magenta" },
-	{ mime = "application/x-bzip2",         fg = "magenta" },
-	{ mime = "application/x-7z-compressed", fg = "magenta" },
-	{ mime = "application/x-rar",           fg = "magenta" },
-	{ mime = "application/xz",              fg = "magenta" },
+	{ mime = "application/*zip", fg = "magenta" },
+	{ mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", fg = "magenta" },
 
 	# Documents
-	{ mime = "application/doc",   fg = "green" },
-	{ mime = "application/pdf",   fg = "green" },
-	{ mime = "application/rtf",   fg = "green" },
-	{ mime = "application/vnd.*", fg = "green" },
+	{ mime = "application/{pdf,doc,rtf,vnd.*}", fg = "green" },
 
 	# Fallback
 	# { name = "*", fg = "white" },
