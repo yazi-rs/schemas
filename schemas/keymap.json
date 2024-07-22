@@ -63,21 +63,21 @@
 			"additionalProperties": false
 		}
 	},
-	"$strOrStrArray": {
-		"oneOf": [
-			{ "type": "string" },
-			{ "type": "array", "items": { "type": "string" } }
-		]
-	},
 	"$defs": {
+		"strOrStrArray": {
+			"oneOf": [
+				{ "type": "string" },
+				{ "type": "array", "items": { "type": "string" } }
+			]
+		},
 		"keymap": {
 			"type": "array",
 			"items": {
 				"type": "object",
 				"properties": {
-					"on":   { "$ref": "#/$strOrStrArray" },
-					"run":  { "$ref": "#/$strOrStrArray" },
-					"exec": { "$ref": "#/$strOrStrArray" },
+					"on":   { "$ref": "#/$defs/strOrStrArray" },
+					"run":  { "$ref": "#/$defs/strOrStrArray" },
+					"exec": { "$ref": "#/$defs/strOrStrArray" },
 					"desc": { "type": "string" }
 				},
 				"oneOf": [{ "required": ["on", "run"] }, { "required": ["on", "exec"] }]
