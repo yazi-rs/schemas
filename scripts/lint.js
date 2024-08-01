@@ -18,7 +18,7 @@ for (const [file, schema] of Object.entries(schemas)) {
 			"check",
 			"--schema",
 			pathToFileURL(join(__dirname, "../schemas/", schema)),
-			`test/${file}`,
+			`yazi/yazi-config/preset/${file}`,
 		]);
 		console.log(
 			`${bold(
