@@ -14,8 +14,7 @@ pnpm install
 ### Structure
 
 - `schemas/*.schema.json`: JSON Schemas for each configuration file.
-- `test/*.toml`: The default TOML configuration files for testing.
-- `scripts/*.js`: Scripts for managing and checking schemas.
+- `scripts/*.js`: Scripts for managing and checking schemas. Tests against the preset configuration files from the submodule.
 
 ## License
 
