@@ -91,31 +91,9 @@
 		"open": {
 			"type": "object",
 			"properties": {
-				"rules": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"mime": { "type": "string" },
-							"name": { "type": "string" },
-							"use": {
-								"oneOf": [
-									{ "type": "array", "items": { "type": "string" } },
-									{ "type": "string" }
-								]
-							}
-						},
-						"required": ["use"],
-						"oneOf": [
-							{
-								"required": ["mime"]
-							},
-							{
-								"required": ["name"]
-							}
-						]
-					}
-				}
+				"rules": { "$ref": "#/$defs/open_rules" },
+				"append_rules": { "$ref": "#/$defs/open_rules" },
+				"prepend_rules": { "$ref": "#/$defs/open_rules" }
 			},
 			"additionalProperties": false
 		},
@@ -356,6 +334,31 @@
 					},
 					{
 						"required": ["name", "run"]
+					}
+				]
+			}
+		},
+		"open_rules": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"mime": { "type": "string" },
+					"name": { "type": "string" },
+					"use": {
+						"oneOf": [
+							{ "type": "array", "items": { "type": "string" } },
+							{ "type": "string" }
+						]
+					}
+				},
+				"required": ["use"],
+				"oneOf": [
+					{
+						"required": ["mime"]
+					},
+					{
+						"required": ["name"]
 					}
 				]
 			}
