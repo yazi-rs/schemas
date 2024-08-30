@@ -44,6 +44,15 @@
 			},
 			"additionalProperties": false
 		},
+		"confirm": {
+			"type": "object",
+			"properties": {
+				"keymap": { "$ref": "#/$defs/keymap" },
+				"prepend_keymap": { "$ref": "#/$defs/keymap" },
+				"append_keymap": { "$ref": "#/$defs/keymap" }
+			},
+			"additionalProperties": false
+		},
 		"completion": {
 			"type": "object",
 			"properties": {
