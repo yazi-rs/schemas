@@ -12,8 +12,8 @@
 
 ## Development environment setup
 
-1. This repositories uses [Node.js](https://nodejs.org/en) and [pnpm](https://pnpm.io/) for linting and formatting the schemas. Make sure to have both installed.
-2. Clone this repository and setup the `yazi` submodule (required for running the linter/tests).
+1. This repositories uses [Node.js](https://nodejs.org/en) and [pnpm](https://pnpm.io/) for testing and formatting the schemas. Make sure to have both installed.
+2. Clone this repository and setup the `yazi` submodule (required for running the tests).
 
    ```
    git clone --recurse-submodules https://github.com/yazi-rs/schemas
@@ -23,7 +23,7 @@
 
 3. Run `pnpm install` to install the project's dependencies.
 
-You can run the lint script using `pnpm lint`, which tests the schemas against the preset config from the `yazi` submodule, and the formatting script using `pnpm format`, which formats the files with [Prettier](https://prettier.io/).
+You can run the tests with `pnpm test`, which tests the schemas against the preset config from the `yazi` submodule, and the formatting script using `pnpm format`, which formats the files with [Prettier](https://prettier.io/).
 
 ## Updating schemas
 
