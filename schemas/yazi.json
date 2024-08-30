@@ -51,12 +51,12 @@
 		"preview": {
 			"type": "object",
 			"properties": {
-				"wrap": {"enum": ["yes", "no"]},
+				"wrap": { "enum": ["yes", "no"] },
 				"tab_size": { "$ref": "/schemas/types/u8.json" },
 				"max_width": { "$ref": "/schemas/types/u32.json" },
 				"max_height": { "$ref": "/schemas/types/u32.json" },
 				"cache_dir": { "type": "string" },
-				"image_delay": {"type": "number", "minimum": 0, "maximum": 100 },
+				"image_delay": { "type": "number", "minimum": 0, "maximum": 100 },
 				"image_filter": {
 					"enum": ["nearest", "triangle", "catmull-rom", "lanczos3"]
 				},
@@ -203,33 +203,33 @@
 			"properties": {
 				"trash_title": { "type": "string" },
 				"trash_origin": {
-					 "$ref": "#/$defs/origin"
-				},
-				"trash_offset": { 
-					"$ref": "#/$defs/offset" 
-				},
-				"delete_title": { "type": "string" },
-				"delete_origin": { 
 					"$ref": "#/$defs/origin"
 				},
-				"delete_offset": { 
-					"$ref": "#/$defs/offset" 
+				"trash_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"delete_title": { "type": "string" },
+				"delete_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"delete_offset": {
+					"$ref": "#/$defs/offset"
 				},
 				"overwrite_title": { "type": "string" },
 				"overwrite_content": { "type": "string" },
 				"overwrite_origin": {
-					"$ref": "#/$defs/origin" 
+					"$ref": "#/$defs/origin"
 				},
-				"overwrite_offset": { 
+				"overwrite_offset": {
 					"$ref": "#/$defs/offset"
-			  },
+				},
 				"quit_title": { "type": "string" },
 				"quit_content": { "type": "string" },
-				"quit_origin": { 
-					"$ref": "#/$defs/origin" 
+				"quit_origin": {
+					"$ref": "#/$defs/origin"
 				},
-				"quit_offset": { 
-					"$ref": "#/$defs/offset" 
+				"quit_offset": {
+					"$ref": "#/$defs/offset"
 				}
 			},
 			"additionalProperties": false
