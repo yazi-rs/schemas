@@ -61,8 +61,6 @@ When updating for a new Yazi release, you must update the Yazi submodule in orde
 
 My preferred strategy for reviewing the changes to files since the last release is to scroll through https://github.com/sxyazi/yazi/commits/shipped/yazi-config (the history for the `yazi-config/` directory, limited to only "shipped"/released commits) from the top and open any commits that (may have) introduced a new option or updated/removed an existing one. Continue scrolling and opening until reaching the commit with the tag of the previous version (the commit message should be something like `chore: bump version to x.y.z`).
 
-![](./docs/images/reviewing-commits-latest-release.mp4)
-
 Then review each of the opened commits for changes in the `yazi-config/` directory. It is important to check every matching commit thoroughly, since the schema tests are only run against the preset files (which may not have every possible configuration scenario/option included). After updating the schemas for the relevant commits you have found, run the tests against the updated submodule and fix any issues raised by the tests.
 
 #### Commit message
