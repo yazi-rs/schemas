@@ -2,14 +2,10 @@
 
 🎉 First of all, thanks for taking the time to contribute! 🎉
 
-## Guidelines
-
-The following is a set of guidelines for contributing to this repository. Use
-your best judgment, and feel free to propose changes to this document in a pull
-request.
-
 > [!TIP]
 > If it's your first time contributing to a project then you should look to the popular [first-contributions](https://github.com/firstcontributions/first-contributions) repository on GitHub. This will give you hands-on experience with the features of GitHub required to make a contribution.
+
+## Guidelines
 
 - Create a [topic branch](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows#_topic_branch) on your fork for your specific PR.
 - Use the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) standard for creating explicit and meaningful commit messages. This repository requires pull request _titles_ to be in the conventional commit format, however we do not require it for individual commits within a pull request.
