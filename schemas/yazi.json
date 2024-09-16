@@ -144,7 +144,12 @@
 				"cd_offset": {
 					"$ref": "#/$defs/offset"
 				},
-				"create_title": { "type": "string" },
+				"create_title": {
+					"type": "array",
+					"items": { "type": "string" },
+					"minItems": 2,
+					"maxItems": 2
+				},
 				"create_origin": {
 					"$ref": "#/$defs/origin"
 				},
