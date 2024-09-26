@@ -23,18 +23,34 @@
 				"sort_by": {
 					"enum": [
 						"none",
-						"alphabetical",
-						"created",
 						"modified",
+						"created",
+						"extension",
+						"alphabetical",
 						"natural",
-						"size"
+						"size",
+						"random"
 					]
 				},
 				"sort_sensitive": { "type": "boolean" },
 				"sort_reverse": { "type": "boolean" },
 				"sort_dir_first": { "type": "boolean" },
 				"sort_translit": { "type": "boolean" },
-				"linemode": { "enum": ["none", "size", "permissions", "mtime"] },
+				"linemode": {
+					"anyOf": [
+						{ "type": "string", "minLength": 1, "maxLength": 20 },
+						{
+							"enum": [
+								"none",
+								"size",
+								"ctime",
+								"mtime",
+								"permissions",
+								"owner"
+							]
+						}
+					]
+				},
 				"show_hidden": { "type": "boolean" },
 				"show_symlink": { "type": "boolean" },
 				"scrolloff": { "$ref": "/schemas/types/u8.json" },
