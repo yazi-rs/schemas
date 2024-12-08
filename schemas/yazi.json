@@ -40,14 +40,7 @@
 					"anyOf": [
 						{ "type": "string", "minLength": 1, "maxLength": 20 },
 						{
-							"enum": [
-								"none",
-								"size",
-								"ctime",
-								"mtime",
-								"permissions",
-								"owner"
-							]
+							"enum": ["none", "size", "ctime", "mtime", "permissions", "owner"]
 						}
 					]
 				},
