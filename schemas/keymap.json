@@ -26,7 +26,16 @@
 			},
 			"additionalProperties": false
 		},
-		"select": {
+		"pick": {
+			"type": "object",
+			"properties": {
+				"keymap": { "$ref": "#/$defs/keymap" },
+				"prepend_keymap": { "$ref": "#/$defs/keymap" },
+				"append_keymap": { "$ref": "#/$defs/keymap" }
+			},
+			"additionalProperties": false
+		},
+		"spot": {
 			"type": "object",
 			"properties": {
 				"keymap": { "$ref": "#/$defs/keymap" },

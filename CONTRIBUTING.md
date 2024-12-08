@@ -15,7 +15,7 @@
 1. This repositories uses [Node.js](https://nodejs.org/en) and [pnpm](https://pnpm.io/) for testing and formatting the schemas. Make sure to have both installed.
 2. Clone this repository and setup the `yazi` submodule (required for running the tests).
 
-   ```
+   ```shell
    git clone --recurse-submodules https://github.com/yazi-rs/schemas
    ```
 

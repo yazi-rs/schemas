@@ -40,14 +40,7 @@
 					"anyOf": [
 						{ "type": "string", "minLength": 1, "maxLength": 20 },
 						{
-							"enum": [
-								"none",
-								"size",
-								"ctime",
-								"mtime",
-								"permissions",
-								"owner"
-							]
+							"enum": ["none", "size", "ctime", "mtime", "permissions", "owner"]
 						}
 					]
 				},
@@ -160,7 +153,12 @@
 				"cd_offset": {
 					"$ref": "#/$defs/offset"
 				},
-				"create_title": { "type": "string" },
+				"create_title": {
+					"type": "array",
+					"items": { "type": "string" },
+					"minItems": 2,
+					"maxItems": 2
+				},
 				"create_origin": {
 					"$ref": "#/$defs/origin"
 				},
@@ -250,7 +248,7 @@
 			},
 			"additionalProperties": false
 		},
-		"select": {
+		"pick": {
 			"type": "object",
 			"properties": {
 				"open_title": { "type": "string" },

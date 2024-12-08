@@ -43,6 +43,17 @@
 			},
 			"additionalProperties": false
 		},
+		"mode": {
+			"type": "object",
+			"properties": {
+				"normal_main": { "$ref": "#/$defs/style" },
+				"normal_alt": { "$ref": "#/$defs/style" },
+				"select_main": { "$ref": "#/$defs/style" },
+				"select_alt": { "$ref": "#/$defs/style" },
+				"unset_main": { "$ref": "#/$defs/style" },
+				"unset_alt": { "$ref": "#/$defs/style" }
+			}
+		},
 		"status": {
 			"type": "object",
 			"properties": {
@@ -73,12 +84,30 @@
 			},
 			"additionalProperties": false
 		},
-		"select": {
+		"pick": {
 			"type": "object",
 			"properties": {
 				"border": { "$ref": "#/$defs/style" },
 				"active": { "$ref": "#/$defs/style" },
 				"inactive": { "$ref": "#/$defs/style" }
+			},
+			"additionalProperties": false
+		},
+		"confirm": {
+			"type": "object",
+			"properties": {
+				"border": { "$ref": "#/$defs/style" },
+				"title": { "$ref": "#/$defs/style" },
+				"content": { "type": ["string", "number", "object", "array", "null"] },
+				"list": { "type": ["string", "number", "object", "array", "null"] },
+				"btn_yes": { "$ref": "#/$defs/style" },
+				"btn_no": { "$ref": "#/$defs/style" },
+				"btn_labels": {
+					"type": "array",
+					"items": "string",
+					"minItems": 2,
+					"maxItems": 2
+				}
 			},
 			"additionalProperties": false
 		},
