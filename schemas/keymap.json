@@ -26,7 +26,7 @@
 			},
 			"additionalProperties": false
 		},
-		"pick": {
+		"select": {
 			"type": "object",
 			"properties": {
 				"keymap": { "$ref": "#/$defs/keymap" },
