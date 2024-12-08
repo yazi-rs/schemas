@@ -250,7 +250,7 @@
 			},
 			"additionalProperties": false
 		},
-		"select": {
+		"pick": {
 			"type": "object",
 			"properties": {
 				"open_title": { "type": "string" },

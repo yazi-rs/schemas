@@ -73,7 +73,7 @@
 			},
 			"additionalProperties": false
 		},
-		"select": {
+		"pick": {
 			"type": "object",
 			"properties": {
 				"border": { "$ref": "#/$defs/style" },
