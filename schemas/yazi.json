@@ -23,8 +23,8 @@
 				"sort_by": {
 					"enum": [
 						"none",
-						"modified",
-						"created",
+						"mtime",
+						"btime",
 						"extension",
 						"alphabetical",
 						"natural",
@@ -40,7 +40,7 @@
 					"anyOf": [
 						{ "type": "string", "minLength": 1, "maxLength": 20 },
 						{
-							"enum": ["none", "size", "ctime", "mtime", "permissions", "owner"]
+							"enum": ["none", "size", "btime", "mtime", "permissions", "owner"]
 						}
 					]
 				},
@@ -134,6 +134,9 @@
 				"fetchers": { "$ref": "#/$defs/fetchers" },
 				"prepend_fetchers": { "$ref": "#/$defs/fetchers" },
 				"append_fetchers": { "$ref": "#/$defs/fetchers" },
+				"spotters": { "$ref": "#/$defs/spotters" },
+				"prepend_spotters": { "$ref": "#/$defs/spotters" },
+				"append_spotters": { "$ref": "#/$defs/spotters" },
 				"preloaders": { "$ref": "#/$defs/preloaders" },
 				"prepend_preloaders": { "$ref": "#/$defs/preloaders" },
 				"append_preloaders": { "$ref": "#/$defs/preloaders" },
@@ -268,13 +271,6 @@
 				"sort_reverse": { "type": "boolean" },
 				"sort_translit": { "type": "boolean" }
 			}
-		},
-		"log": {
-			"type": "object",
-			"properties": {
-				"enabled": { "type": "boolean" }
-			},
-			"additionalProperties": false
 		}
 	},
 	"$defs": {
