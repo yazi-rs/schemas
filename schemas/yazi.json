@@ -157,10 +157,17 @@
 					"$ref": "#/$defs/offset"
 				},
 				"create_title": {
-					"type": "array",
-					"items": { "type": "string" },
-					"minItems": 2,
-					"maxItems": 2
+			        "oneOf": [
+			          {
+			            "type": "array",
+			            "items": { "type": "string" },
+			            "minItems": 2,
+			            "maxItems": 2
+			          },
+			          {
+			            "type": "string"
+			          }
+			        ]
 				},
 				"create_origin": {
 					"$ref": "#/$defs/origin"
