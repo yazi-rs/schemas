@@ -1,7 +1,7 @@
 {
 	"type": "module",
 	"scripts": {
-		"test": "node ./scripts/test.js",
+		"test": "node ./test/index.js",
 		"format": "prettier --write ."
 	},
 	"dependencies": {
