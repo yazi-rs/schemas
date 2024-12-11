@@ -93,7 +93,7 @@
 				"btn_no": { "$ref": "#/$defs/style" },
 				"btn_labels": {
 					"type": "array",
-					"items": "string",
+					"items": { "type": "string" },
 					"minItems": 2,
 					"maxItems": 2
 				}
@@ -206,10 +206,23 @@
 		"icon": {
 			"type": "object",
 			"properties": {
-				"rules": { "$ref": "#/$defs/icon_rules" },
-				"prepend_rules": { "$ref": "#/$defs/icon_rules" },
-				"append_rules": { "$ref": "#/$defs/icon_rules" }
-			}
+				"globs": { "$ref": "#/$defs/icon_rules" },
+				"prepend_globs": { "$ref": "#/$defs/icon_rules" },
+				"append_globs": { "$ref": "#/$defs/icon_rules" },
+				"dirs": { "$ref": "#/$defs/icon_rules" },
+				"prepend_dirs": { "$ref": "#/$defs/icon_rules" },
+				"append_dirs": { "$ref": "#/$defs/icon_rules" },
+				"files": { "$ref": "#/$defs/icon_rules" },
+				"prepend_files": { "$ref": "#/$defs/icon_rules" },
+				"append_files": { "$ref": "#/$defs/icon_rules" },
+				"exts": { "$ref": "#/$defs/icon_rules" },
+				"prepend_exts": { "$ref": "#/$defs/icon_rules" },
+				"append_exts": { "$ref": "#/$defs/icon_rules" },
+				"conds": { "$ref": "#/$defs/cond_rules" },
+				"prepend_conds": { "$ref": "#/$defs/cond_rules" },
+				"append_conds": { "$ref": "#/$defs/cond_rules" }
+			},
+			"additionalProperties": false
 		}
 	},
 	"$defs": {
@@ -268,6 +281,18 @@
 					"fg": { "$ref": "#/$defs/color" }
 				},
 				"required": ["name", "text"]
+			}
+		},
+		"cond_rules": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"if": { "type": "string" },
+					"text": { "type": "string" },
+					"fg": { "$ref": "#/$defs/color" }
+				},
+				"oneOf": [{ "required": ["if", "text"] }, { "required": ["if", "fg"] }]
 			}
 		}
 	}
