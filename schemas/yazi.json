@@ -325,6 +325,25 @@
 				]
 			}
 		},
+        "spotters": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": { "type": "string" },
+					"mime": { "type": "string" },
+					"run": { "type": "string" }
+				},
+				"oneOf": [
+					{
+						"required": ["mime", "run"]
+					},
+					{
+						"required": ["name", "run"]
+					}
+				]
+			}
+		},
 		"preloaders": {
 			"type": "array",
 			"items": {
