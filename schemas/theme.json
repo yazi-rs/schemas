@@ -292,7 +292,7 @@
 					"text": { "type": "string" },
 					"fg": { "$ref": "#/$defs/color" }
 				},
-				"oneOf": [{ "required": ["if", "text"] }, { "required": ["if", "fg"] }]
+				"anyOf": [{ "required": ["if", "text"] }, { "required": ["if", "fg"] }]
 			}
 		}
 	}
