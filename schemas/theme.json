@@ -59,26 +59,44 @@
 		"status": {
 			"type": "object",
 			"properties": {
-				"separator_open": { "type": "string" },
-				"separator_close": { "type": "string" },
-				"progress_label": { "$ref": "#/$defs/style" },
-				"progress_normal": { "$ref": "#/$defs/style" },
-				"progress_error": { "$ref": "#/$defs/style" },
+				"overall": { "$ref": "#/$defs/style" },
+				"sep_left": {
+					"type": "object",
+					"properties": {
+						"open": { "type": "string" },
+						"close": { "type": "string" }
+					},
+					"additionalProperties": false
+				},
+				"sep_right": {
+					"type": "object",
+					"properties": {
+						"open": { "type": "string" },
+						"close": { "type": "string" }
+					},
+					"additionalProperties": false
+				},
+				"perm_sep": { "$ref": "#/$defs/style" },
 				"perm_type": { "$ref": "#/$defs/style" },
 				"perm_read": { "$ref": "#/$defs/style" },
 				"perm_write": { "$ref": "#/$defs/style" },
 				"perm_exec": { "$ref": "#/$defs/style" },
-				"perm_sep": { "$ref": "#/$defs/style" }
+				"progress_label": { "$ref": "#/$defs/style" },
+				"progress_normal": { "$ref": "#/$defs/style" },
+				"progress_error": { "$ref": "#/$defs/style" }
 			},
 			"additionalProperties": false
 		},
-		"input": {
+		"which": {
 			"type": "object",
 			"properties": {
-				"border": { "$ref": "#/$defs/style" },
-				"title": { "$ref": "#/$defs/style" },
-				"value": { "$ref": "#/$defs/style" },
-				"selected": { "$ref": "#/$defs/style" }
+				"cols": { "type": "integer", "minimum": 1, "maximum": 3 },
+				"mask": { "$ref": "#/$defs/style" },
+				"cand": { "$ref": "#/$defs/style" },
+				"rest": { "$ref": "#/$defs/style" },
+				"desc": { "$ref": "#/$defs/style" },
+				"separator": { "type": "string" },
+				"separator_style": { "$ref": "#/$defs/style" }
 			},
 			"additionalProperties": false
 		},
@@ -100,6 +118,28 @@
 			},
 			"additionalProperties": false
 		},
+		"spot": {
+			"type": "object",
+			"properties": {
+				"border": { "$ref": "#/$defs/style" },
+				"title": { "$ref": "#/$defs/style" },
+				"tbl_col": { "$ref": "#/$defs/style" },
+				"tbl_cell": { "$ref": "#/$defs/style" }
+			},
+			"additionalProperties": false
+		},
+		"notify": {
+			"type": "object",
+			"properties": {
+				"title_info": { "$ref": "#/$defs/style" },
+				"title_warn": { "$ref": "#/$defs/style" },
+				"title_error": { "$ref": "#/$defs/style" },
+				"icon_info": { "type": "string" },
+				"icon_warn": { "type": "string" },
+				"icon_error": { "type": "string" }
+			},
+			"additionalProperties": false
+		},
 		"pick": {
 			"type": "object",
 			"properties": {
@@ -109,7 +149,17 @@
 			},
 			"additionalProperties": false
 		},
-		"completion": {
+		"input": {
+			"type": "object",
+			"properties": {
+				"border": { "$ref": "#/$defs/style" },
+				"title": { "$ref": "#/$defs/style" },
+				"value": { "$ref": "#/$defs/style" },
+				"selected": { "$ref": "#/$defs/style" }
+			},
+			"additionalProperties": false
+		},
+		"cmp": {
 			"type": "object",
 			"properties": {
 				"border": { "$ref": "#/$defs/style" },
@@ -130,19 +180,6 @@
 			},
 			"additionalProperties": false
 		},
-		"which": {
-			"type": "object",
-			"properties": {
-				"cols": { "type": "integer", "minimum": 1, "maximum": 3 },
-				"mask": { "$ref": "#/$defs/style" },
-				"cand": { "$ref": "#/$defs/style" },
-				"rest": { "$ref": "#/$defs/style" },
-				"desc": { "$ref": "#/$defs/style" },
-				"separator": { "type": "string" },
-				"separator_style": { "$ref": "#/$defs/style" }
-			},
-			"additionalProperties": false
-		},
 		"help": {
 			"type": "object",
 			"properties": {
@@ -151,18 +188,6 @@
 				"desc": { "$ref": "#/$defs/style" },
 				"hovered": { "$ref": "#/$defs/style" },
 				"footer": { "$ref": "#/$defs/style" }
-			},
-			"additionalProperties": false
-		},
-		"notify": {
-			"type": "object",
-			"properties": {
-				"title_info": { "$ref": "#/$defs/style" },
-				"title_warn": { "$ref": "#/$defs/style" },
-				"title_error": { "$ref": "#/$defs/style" },
-				"icon_info": { "type": "string" },
-				"icon_warn": { "type": "string" },
-				"icon_error": { "type": "string" }
 			},
 			"additionalProperties": false
 		},
