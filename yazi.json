@@ -14,11 +14,10 @@
 				"ratio": {
 					"type": "array",
 					"items": {
-						"type": "integer",
-						"minimum": 0,
-						"maximum": 8
+						"$ref": "/schemas/types/u16.json"
 					},
-					"minItems": 3
+					"minItems": 3,
+					"maxItems": 3
 				},
 				"sort_by": {
 					"enum": [
@@ -94,7 +93,10 @@
 						"run": { "type": "string" },
 						"block": { "type": "boolean" },
 						"orphan": { "type": "boolean" },
-						"display_name": { "type": "string" }
+						"desc": { "type": "string" },
+						"for": {
+							"enum": ["unix", "windows", "linux", "macos", "android"]
+						}
 					},
 					"required": ["run"]
 				}
@@ -149,6 +151,7 @@
 		"input": {
 			"type": "object",
 			"properties": {
+				"cursor_blink": { "type": "boolean" },
 				"cd_title": { "type": "string" },
 				"cd_origin": {
 					"$ref": "#/$defs/origin"
@@ -157,17 +160,17 @@
 					"$ref": "#/$defs/offset"
 				},
 				"create_title": {
-			        "oneOf": [
-			          {
-			            "type": "array",
-			            "items": { "type": "string" },
-			            "minItems": 2,
-			            "maxItems": 2
-			          },
-			          {
-			            "type": "string"
-			          }
-			        ]
+					"oneOf": [
+						{
+							"type": "array",
+							"items": { "type": "string" },
+							"minItems": 2,
+							"maxItems": 2
+						},
+						{
+							"type": "string"
+						}
+					]
 				},
 				"create_origin": {
 					"$ref": "#/$defs/origin"
@@ -309,7 +312,7 @@
 			"items": {
 				"type": "object",
 				"properties": {
-					"cond": { "type": "string" },
+					"id": { "type": "string" },
 					"name": { "type": "string" },
 					"mime": { "type": "string" },
 					"run": { "type": "string" },
@@ -325,7 +328,7 @@
 				]
 			}
 		},
-        "spotters": {
+		"spotters": {
 			"type": "array",
 			"items": {
 				"type": "object",
