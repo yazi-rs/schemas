@@ -26,7 +26,7 @@
 			},
 			"additionalProperties": false
 		},
-		"pick": {
+		"spot": {
 			"type": "object",
 			"properties": {
 				"keymap": { "$ref": "#/$defs/keymap" },
@@ -35,7 +35,7 @@
 			},
 			"additionalProperties": false
 		},
-		"spot": {
+		"pick": {
 			"type": "object",
 			"properties": {
 				"keymap": { "$ref": "#/$defs/keymap" },
@@ -62,7 +62,7 @@
 			},
 			"additionalProperties": false
 		},
-		"completion": {
+		"cmp": {
 			"type": "object",
 			"properties": {
 				"keymap": { "$ref": "#/$defs/keymap" },
