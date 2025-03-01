@@ -62,7 +62,7 @@
 			},
 			"additionalProperties": false
 		},
-		"help": {
+		"cmp": {
 			"type": "object",
 			"properties": {
 				"keymap": { "$ref": "#/$defs/keymap" },
@@ -71,7 +71,7 @@
 			},
 			"additionalProperties": false
 		},
-		"cmp": {
+		"help": {
 			"type": "object",
 			"properties": {
 				"keymap": { "$ref": "#/$defs/keymap" },
