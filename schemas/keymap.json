@@ -95,7 +95,8 @@
 				"properties": {
 					"on": { "$ref": "#/$defs/strOrStrArray" },
 					"run": { "$ref": "#/$defs/strOrStrArray" },
-					"desc": { "type": "string" }
+					"desc": { "type": "string" },
+					"for": { "$ref": "/schemas/types/platform.json" }
 				},
 				"required": ["on", "run"]
 			}
