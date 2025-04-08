@@ -28,6 +28,7 @@
 				"preview_hovered": { "$ref": "#/$defs/style" },
 				"find_keyword": { "$ref": "#/$defs/style" },
 				"find_position": { "$ref": "#/$defs/style" },
+				"symlink_target": { "$ref": "#/$defs/style" },
 				"marker_copied": { "$ref": "#/$defs/style" },
 				"marker_cut": { "$ref": "#/$defs/style" },
 				"marker_marked": { "$ref": "#/$defs/style" },
