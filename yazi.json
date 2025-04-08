@@ -94,9 +94,7 @@
 						"block": { "type": "boolean" },
 						"orphan": { "type": "boolean" },
 						"desc": { "type": "string" },
-						"for": {
-							"enum": ["unix", "windows", "linux", "macos", "android"]
-						}
+						"for": { "$ref": "/schemas/types/platform.json" }
 					},
 					"required": ["run"]
 				}

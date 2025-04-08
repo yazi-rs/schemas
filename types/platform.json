@@ -1,0 +1,5 @@
+{
+	"$id": "https://yazi-rs.github.io/schemas/types/platform.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"enum": ["unix", "windows", "linux", "macos", "android"]
+}
