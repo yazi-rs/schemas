@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-git submodule update --remote
 cd yazi/ || exit
+
+git fetch --tags --force
 git reset --hard "shipped"
