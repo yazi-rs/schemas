@@ -16,7 +16,7 @@
 			},
 			"additionalProperties": false
 		},
-		"manager": {
+		"mgr": {
 			"type": "object",
 			"properties": {
 				"cwd": {
@@ -33,9 +33,6 @@
 				"marker_cut": { "$ref": "#/$defs/style" },
 				"marker_marked": { "$ref": "#/$defs/style" },
 				"marker_selected": { "$ref": "#/$defs/style" },
-				"tab_active": { "$ref": "#/$defs/style" },
-				"tab_inactive": { "$ref": "#/$defs/style" },
-				"tab_width": { "$ref": "/schemas/types/u8.json" },
 				"count_copied": { "$ref": "#/$defs/style" },
 				"count_cut": { "$ref": "#/$defs/style" },
 				"count_selected": { "$ref": "#/$defs/style" },
@@ -87,6 +84,29 @@
 				"progress_error": { "$ref": "#/$defs/style" }
 			},
 			"additionalProperties": false
+		},
+		"tabs": {
+			"type": "object",
+			"properties": {
+				"active": { "$ref": "#/$defs/style" },
+				"inactive": { "$ref": "#/$defs/style" },
+				"sep_inner": {
+					"type": "object",
+					"properties": {
+						"open": { "type": "string" },
+						"close": { "type": "string" }
+					},
+					"additionalProperties": false
+				},
+				"sep_outer": {
+					"type": "object",
+					"properties": {
+						"open": { "type": "string" },
+						"close": { "type": "string" }
+					},
+					"additionalProperties": false
+				}
+			}
 		},
 		"which": {
 			"type": "object",
