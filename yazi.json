@@ -8,7 +8,7 @@
 			"default": "https://yazi-rs.github.io/schemas/yazi.schema.json",
 			"type": "string"
 		},
-		"manager": {
+		"mgr": {
 			"type": "object",
 			"properties": {
 				"ratio": {
@@ -69,7 +69,6 @@
 					"enum": ["nearest", "triangle", "catmull-rom", "lanczos3"]
 				},
 				"image_quality": { "type": "integer", "minimum": 50, "maximum": 90 },
-				"sixel_fraction": { "type": "integer", "minimum": 10, "maximum": 20 },
 				"ueberzug_scale": { "type": "number", "minimum": 0 },
 				"ueberzug_offset": {
 					"type": "array",

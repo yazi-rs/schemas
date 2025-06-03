@@ -8,7 +8,7 @@
 			"default": "https://yazi-rs.github.io/schemas/keymap.schema.json",
 			"type": "string"
 		},
-		"manager": {
+		"mgr": {
 			"type": "object",
 			"properties": {
 				"keymap": { "$ref": "#/$defs/keymap" },
