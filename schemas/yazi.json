@@ -72,11 +72,7 @@
 				"ueberzug_scale": { "type": "number", "minimum": 0 },
 				"ueberzug_offset": {
 					"type": "array",
-					"items": {
-						"type": "number",
-						"minimum": 0,
-						"maximum": 1
-					},
+					"items": { "type": "number" },
 					"minItems": 4,
 					"maxItems": 4
 				}
