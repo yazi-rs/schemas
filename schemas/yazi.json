@@ -291,9 +291,12 @@
 		},
 		"offset": {
 			"type": "array",
-			"items": {
-				"$ref": "/schemas/types/u16.json"
-			},
+			"items": [
+				{ "type": "integer", "minimum": -32768, "maximum": 32767 },
+				{ "type": "integer", "minimum": -32768, "maximum": 32767 },
+				{ "type": "integer", "minimum": 0, "maximum": 32767 },
+				{ "type": "integer", "minimum": 3, "maximum": 32767 }
+			],
 			"minItems": 4,
 			"maxItems": 4
 		},
