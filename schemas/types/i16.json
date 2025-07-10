@@ -1,5 +1,5 @@
 {
-	"$id": "https://yazi-rs.github.io/schemas/types/u16.json",
+	"$id": "https://yazi-rs.github.io/schemas/types/i16.json",
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"type": "integer",
 	"minimum": -32768,
