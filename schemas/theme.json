@@ -8,7 +8,15 @@
 			"default": "https://yazi-rs.github.io/schemas/theme.schema.json",
 			"type": "string"
 		},
-		"manager": {
+		"flavor": {
+			"type": "object",
+			"properties": {
+				"dark": { "type": "string" },
+				"light": { "type": "string" }
+			},
+			"additionalProperties": false
+		},
+		"mgr": {
 			"type": "object",
 			"properties": {
 				"cwd": {
@@ -20,41 +28,145 @@
 				"preview_hovered": { "$ref": "#/$defs/style" },
 				"find_keyword": { "$ref": "#/$defs/style" },
 				"find_position": { "$ref": "#/$defs/style" },
-				"marker_selected": { "$ref": "#/$defs/style" },
+				"symlink_target": { "$ref": "#/$defs/style" },
 				"marker_copied": { "$ref": "#/$defs/style" },
 				"marker_cut": { "$ref": "#/$defs/style" },
-				"tab_active": { "$ref": "#/$defs/style" },
-				"tab_inactive": { "$ref": "#/$defs/style" },
-				"tab_width": { "$ref": "/schemas/types/u8.json" },
+				"marker_marked": { "$ref": "#/$defs/style" },
+				"marker_selected": { "$ref": "#/$defs/style" },
+				"count_copied": { "$ref": "#/$defs/style" },
+				"count_cut": { "$ref": "#/$defs/style" },
+				"count_selected": { "$ref": "#/$defs/style" },
 				"border_symbol": { "type": "string" },
 				"border_style": { "$ref": "#/$defs/style" },
-				"folder_offset": {
-					"$ref": "#/$defs/layout_offset"
-				},
-				"preview_offset": {
-					"$ref": "#/$defs/layout_offset"
-				},
 				"syntect_theme": { "type": "string" }
+			},
+			"additionalProperties": false
+		},
+		"mode": {
+			"type": "object",
+			"properties": {
+				"normal_main": { "$ref": "#/$defs/style" },
+				"normal_alt": { "$ref": "#/$defs/style" },
+				"select_main": { "$ref": "#/$defs/style" },
+				"select_alt": { "$ref": "#/$defs/style" },
+				"unset_main": { "$ref": "#/$defs/style" },
+				"unset_alt": { "$ref": "#/$defs/style" }
 			},
 			"additionalProperties": false
 		},
 		"status": {
 			"type": "object",
 			"properties": {
-				"separator_open": { "type": "string" },
-				"separator_close": { "type": "string" },
-				"separator_style": { "$ref": "#/$defs/style" },
-				"mode_normal": { "$ref": "#/$defs/style" },
-				"mode_select": { "$ref": "#/$defs/style" },
-				"mode_unset": { "$ref": "#/$defs/style" },
+				"overall": { "$ref": "#/$defs/style" },
+				"sep_left": {
+					"type": "object",
+					"properties": {
+						"open": { "type": "string" },
+						"close": { "type": "string" }
+					},
+					"additionalProperties": false
+				},
+				"sep_right": {
+					"type": "object",
+					"properties": {
+						"open": { "type": "string" },
+						"close": { "type": "string" }
+					},
+					"additionalProperties": false
+				},
+				"perm_sep": { "$ref": "#/$defs/style" },
+				"perm_type": { "$ref": "#/$defs/style" },
+				"perm_read": { "$ref": "#/$defs/style" },
+				"perm_write": { "$ref": "#/$defs/style" },
+				"perm_exec": { "$ref": "#/$defs/style" },
 				"progress_label": { "$ref": "#/$defs/style" },
 				"progress_normal": { "$ref": "#/$defs/style" },
-				"progress_error": { "$ref": "#/$defs/style" },
-				"permissions_t": { "$ref": "#/$defs/style" },
-				"permissions_r": { "$ref": "#/$defs/style" },
-				"permissions_w": { "$ref": "#/$defs/style" },
-				"permissions_x": { "$ref": "#/$defs/style" },
-				"permissions_s": { "$ref": "#/$defs/style" }
+				"progress_error": { "$ref": "#/$defs/style" }
+			},
+			"additionalProperties": false
+		},
+		"tabs": {
+			"type": "object",
+			"properties": {
+				"active": { "$ref": "#/$defs/style" },
+				"inactive": { "$ref": "#/$defs/style" },
+				"sep_inner": {
+					"type": "object",
+					"properties": {
+						"open": { "type": "string" },
+						"close": { "type": "string" }
+					},
+					"additionalProperties": false
+				},
+				"sep_outer": {
+					"type": "object",
+					"properties": {
+						"open": { "type": "string" },
+						"close": { "type": "string" }
+					},
+					"additionalProperties": false
+				}
+			}
+		},
+		"which": {
+			"type": "object",
+			"properties": {
+				"cols": { "type": "integer", "minimum": 1, "maximum": 3 },
+				"mask": { "$ref": "#/$defs/style" },
+				"cand": { "$ref": "#/$defs/style" },
+				"rest": { "$ref": "#/$defs/style" },
+				"desc": { "$ref": "#/$defs/style" },
+				"separator": { "type": "string" },
+				"separator_style": { "$ref": "#/$defs/style" }
+			},
+			"additionalProperties": false
+		},
+		"confirm": {
+			"type": "object",
+			"properties": {
+				"border": { "$ref": "#/$defs/style" },
+				"title": { "$ref": "#/$defs/style" },
+				"content": { "$ref": "#/$defs/style" },
+				"list": { "$ref": "#/$defs/style" },
+				"btn_yes": { "$ref": "#/$defs/style" },
+				"btn_no": { "$ref": "#/$defs/style" },
+				"btn_labels": {
+					"type": "array",
+					"items": { "type": "string" },
+					"minItems": 2,
+					"maxItems": 2
+				}
+			},
+			"additionalProperties": false
+		},
+		"spot": {
+			"type": "object",
+			"properties": {
+				"border": { "$ref": "#/$defs/style" },
+				"title": { "$ref": "#/$defs/style" },
+				"tbl_col": { "$ref": "#/$defs/style" },
+				"tbl_cell": { "$ref": "#/$defs/style" }
+			},
+			"additionalProperties": false
+		},
+		"notify": {
+			"type": "object",
+			"properties": {
+				"title_info": { "$ref": "#/$defs/style" },
+				"title_warn": { "$ref": "#/$defs/style" },
+				"title_error": { "$ref": "#/$defs/style" },
+				"icon_info": { "type": "string" },
+				"icon_warn": { "type": "string" },
+				"icon_error": { "type": "string" }
+			},
+			"additionalProperties": false
+		},
+		"pick": {
+			"type": "object",
+			"properties": {
+				"border": { "$ref": "#/$defs/style" },
+				"active": { "$ref": "#/$defs/style" },
+				"inactive": { "$ref": "#/$defs/style" }
 			},
 			"additionalProperties": false
 		},
@@ -68,16 +180,7 @@
 			},
 			"additionalProperties": false
 		},
-		"select": {
-			"type": "object",
-			"properties": {
-				"border": { "$ref": "#/$defs/style" },
-				"active": { "$ref": "#/$defs/style" },
-				"inactive": { "$ref": "#/$defs/style" }
-			},
-			"additionalProperties": false
-		},
-		"completion": {
+		"cmp": {
 			"type": "object",
 			"properties": {
 				"border": { "$ref": "#/$defs/style" },
@@ -98,23 +201,11 @@
 			},
 			"additionalProperties": false
 		},
-		"which": {
-			"type": "object",
-			"properties": {
-				"mask": { "$ref": "#/$defs/style" },
-				"cand": { "$ref": "#/$defs/style" },
-				"rest": { "$ref": "#/$defs/style" },
-				"desc": { "$ref": "#/$defs/style" },
-				"separator": { "type": "string" },
-				"separator_style": { "$ref": "#/$defs/style" }
-			},
-			"additionalProperties": false
-		},
 		"help": {
 			"type": "object",
 			"properties": {
 				"on": { "$ref": "#/$defs/style" },
-				"exec": { "$ref": "#/$defs/style" },
+				"run": { "$ref": "#/$defs/style" },
 				"desc": { "$ref": "#/$defs/style" },
 				"hovered": { "$ref": "#/$defs/style" },
 				"footer": { "$ref": "#/$defs/style" }
@@ -141,7 +232,8 @@
 							"hidden": { "type": "boolean" },
 							"crossed": { "type": "boolean" },
 							"mime": { "type": "string" },
-							"name": { "type": "string" }
+							"name": { "type": "string" },
+							"is": { "type": "string" }
 						},
 						"oneOf": [
 							{
@@ -157,10 +249,26 @@
 			},
 			"additionalProperties": false
 		},
-		"icons": {
-			"additionalProperties": {
-				"type": "string"
-			}
+		"icon": {
+			"type": "object",
+			"properties": {
+				"globs": { "$ref": "#/$defs/icon_rules" },
+				"prepend_globs": { "$ref": "#/$defs/icon_rules" },
+				"append_globs": { "$ref": "#/$defs/icon_rules" },
+				"dirs": { "$ref": "#/$defs/icon_rules" },
+				"prepend_dirs": { "$ref": "#/$defs/icon_rules" },
+				"append_dirs": { "$ref": "#/$defs/icon_rules" },
+				"files": { "$ref": "#/$defs/icon_rules" },
+				"prepend_files": { "$ref": "#/$defs/icon_rules" },
+				"append_files": { "$ref": "#/$defs/icon_rules" },
+				"exts": { "$ref": "#/$defs/icon_rules" },
+				"prepend_exts": { "$ref": "#/$defs/icon_rules" },
+				"append_exts": { "$ref": "#/$defs/icon_rules" },
+				"conds": { "$ref": "#/$defs/cond_rules" },
+				"prepend_conds": { "$ref": "#/$defs/cond_rules" },
+				"append_conds": { "$ref": "#/$defs/cond_rules" }
+			},
+			"additionalProperties": false
 		}
 	},
 	"$defs": {
@@ -209,11 +317,29 @@
 				"crossed": { "type": "boolean" }
 			}
 		},
-		"layout_offset": {
+		"icon_rules": {
 			"type": "array",
-			"items": { "type": "integer", "minimum": 0, "maximum": 1 },
-			"minItems": 4,
-			"maxItems": 4
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": { "type": "string" },
+					"text": { "type": "string" },
+					"fg": { "$ref": "#/$defs/color" }
+				},
+				"required": ["name", "text"]
+			}
+		},
+		"cond_rules": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"if": { "type": "string" },
+					"text": { "type": "string" },
+					"fg": { "$ref": "#/$defs/color" }
+				},
+				"anyOf": [{ "required": ["if", "text"] }, { "required": ["if", "fg"] }]
+			}
 		}
 	}
 }

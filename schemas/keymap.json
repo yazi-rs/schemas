@@ -8,68 +8,97 @@
 			"default": "https://yazi-rs.github.io/schemas/keymap.schema.json",
 			"type": "string"
 		},
-		"manager": {
+		"mgr": {
 			"type": "object",
 			"properties": {
-				"keymap": { "$ref": "#/$defs/keymap" }
+				"keymap": { "$ref": "#/$defs/keymap" },
+				"prepend_keymap": { "$ref": "#/$defs/keymap" },
+				"append_keymap": { "$ref": "#/$defs/keymap" }
 			},
 			"additionalProperties": false
 		},
 		"tasks": {
 			"type": "object",
 			"properties": {
-				"keymap": { "$ref": "#/$defs/keymap" }
+				"keymap": { "$ref": "#/$defs/keymap" },
+				"prepend_keymap": { "$ref": "#/$defs/keymap" },
+				"append_keymap": { "$ref": "#/$defs/keymap" }
 			},
 			"additionalProperties": false
 		},
-		"select": {
+		"spot": {
 			"type": "object",
 			"properties": {
-				"keymap": { "$ref": "#/$defs/keymap" }
+				"keymap": { "$ref": "#/$defs/keymap" },
+				"prepend_keymap": { "$ref": "#/$defs/keymap" },
+				"append_keymap": { "$ref": "#/$defs/keymap" }
+			},
+			"additionalProperties": false
+		},
+		"pick": {
+			"type": "object",
+			"properties": {
+				"keymap": { "$ref": "#/$defs/keymap" },
+				"prepend_keymap": { "$ref": "#/$defs/keymap" },
+				"append_keymap": { "$ref": "#/$defs/keymap" }
 			},
 			"additionalProperties": false
 		},
 		"input": {
 			"type": "object",
 			"properties": {
-				"keymap": { "$ref": "#/$defs/keymap" }
+				"keymap": { "$ref": "#/$defs/keymap" },
+				"prepend_keymap": { "$ref": "#/$defs/keymap" },
+				"append_keymap": { "$ref": "#/$defs/keymap" }
 			},
 			"additionalProperties": false
 		},
-		"completion": {
+		"confirm": {
 			"type": "object",
 			"properties": {
-				"keymap": { "$ref": "#/$defs/keymap" }
+				"keymap": { "$ref": "#/$defs/keymap" },
+				"prepend_keymap": { "$ref": "#/$defs/keymap" },
+				"append_keymap": { "$ref": "#/$defs/keymap" }
+			},
+			"additionalProperties": false
+		},
+		"cmp": {
+			"type": "object",
+			"properties": {
+				"keymap": { "$ref": "#/$defs/keymap" },
+				"prepend_keymap": { "$ref": "#/$defs/keymap" },
+				"append_keymap": { "$ref": "#/$defs/keymap" }
 			},
 			"additionalProperties": false
 		},
 		"help": {
 			"type": "object",
 			"properties": {
-				"keymap": { "$ref": "#/$defs/keymap" }
+				"keymap": { "$ref": "#/$defs/keymap" },
+				"prepend_keymap": { "$ref": "#/$defs/keymap" },
+				"append_keymap": { "$ref": "#/$defs/keymap" }
 			},
 			"additionalProperties": false
 		}
 	},
 	"$defs": {
+		"strOrStrArray": {
+			"oneOf": [
+				{ "type": "string" },
+				{ "type": "array", "items": { "type": "string" } }
+			]
+		},
 		"keymap": {
 			"type": "array",
 			"items": {
 				"type": "object",
 				"properties": {
-					"on": {
-						"type": "array",
-						"items": { "type": "string" }
-					},
-					"exec": {
-						"oneOf": [
-							{ "type": "string" },
-							{ "type": "array", "items": { "type": "string" } }
-						]
-					},
-					"desc": { "type": "string" }
+					"on": { "$ref": "#/$defs/strOrStrArray" },
+					"run": { "$ref": "#/$defs/strOrStrArray" },
+					"desc": { "type": "string" },
+					"for": { "$ref": "/schemas/types/platform.json" }
 				},
-				"required": ["on", "exec"]
+				"required": ["on", "run"]
 			}
 		}
 	}

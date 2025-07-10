@@ -7,9 +7,10 @@ import { green, red, bold, inverse } from "kleur/colors";
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 const schemas = {
-	"yazi.toml": "yazi.json",
-	"keymap.toml": "keymap.json",
-	"theme.toml": "theme.json",
+	"yazi-default.toml": "yazi.json",
+	"keymap-default.toml": "keymap.json",
+	"theme-dark.toml": "theme.json",
+	"theme-light.toml": "theme.json",
 };
 
 for (const [file, schema] of Object.entries(schemas)) {
@@ -17,8 +18,8 @@ for (const [file, schema] of Object.entries(schemas)) {
 		await execa("taplo", [
 			"check",
 			"--schema",
-			pathToFileURL(join(__dirname, "../schemas/", schema)),
-			`test/${file}`,
+			pathToFileURL(join(__dirname, "../schemas/", schema)).toString(),
+			`yazi/yazi-config/preset/${file}`,
 		]);
 		console.log(
 			`${bold(

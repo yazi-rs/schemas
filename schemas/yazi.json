@@ -8,52 +8,71 @@
 			"default": "https://yazi-rs.github.io/schemas/yazi.schema.json",
 			"type": "string"
 		},
-		"manager": {
+		"mgr": {
 			"type": "object",
 			"properties": {
-				"layout": {
+				"ratio": {
 					"type": "array",
 					"items": {
-						"type": "integer",
-						"minimum": 0,
-						"maximum": 8
+						"$ref": "/schemas/types/u16.json"
 					},
-					"minItems": 3
+					"minItems": 3,
+					"maxItems": 3
 				},
 				"sort_by": {
 					"enum": [
 						"none",
+						"mtime",
+						"btime",
+						"extension",
 						"alphabetical",
-						"created",
-						"modified",
 						"natural",
-						"size"
+						"size",
+						"random"
 					]
 				},
 				"sort_sensitive": { "type": "boolean" },
 				"sort_reverse": { "type": "boolean" },
 				"sort_dir_first": { "type": "boolean" },
-				"linemode": { "enum": ["none", "size", "permissions", "mtime"] },
+				"sort_translit": { "type": "boolean" },
+				"linemode": {
+					"anyOf": [
+						{ "type": "string", "minLength": 1, "maxLength": 20 },
+						{
+							"enum": ["none", "size", "btime", "mtime", "permissions", "owner"]
+						}
+					]
+				},
 				"show_hidden": { "type": "boolean" },
-				"show_symlink": { "type": "boolean" }
+				"show_symlink": { "type": "boolean" },
+				"scrolloff": { "$ref": "/schemas/types/u8.json" },
+				"mouse_events": {
+					"type": "array",
+					"items": {
+						"enum": ["click", "scroll", "touch", "move", "drag"]
+					}
+				},
+				"title_format": { "type": "string" }
 			},
 			"additionalProperties": false
 		},
 		"preview": {
 			"type": "object",
 			"properties": {
+				"wrap": { "enum": ["yes", "no"] },
 				"tab_size": { "$ref": "/schemas/types/u8.json" },
 				"max_width": { "$ref": "/schemas/types/u32.json" },
 				"max_height": { "$ref": "/schemas/types/u32.json" },
 				"cache_dir": { "type": "string" },
+				"image_delay": { "type": "number", "minimum": 0, "maximum": 100 },
+				"image_filter": {
+					"enum": ["nearest", "triangle", "catmull-rom", "lanczos3"]
+				},
+				"image_quality": { "type": "integer", "minimum": 50, "maximum": 90 },
 				"ueberzug_scale": { "type": "number", "minimum": 0 },
 				"ueberzug_offset": {
 					"type": "array",
-					"items": {
-						"type": "number",
-						"minimum": 0,
-						"maximum": 1
-					},
+					"items": { "type": "number" },
 					"minItems": 4,
 					"maxItems": 4
 				}
@@ -66,43 +85,22 @@
 				"items": {
 					"type": "object",
 					"properties": {
-						"exec": { "type": "string" },
+						"run": { "type": "string" },
 						"block": { "type": "boolean" },
 						"orphan": { "type": "boolean" },
-						"display_name": { "type": "string" }
+						"desc": { "type": "string" },
+						"for": { "$ref": "/schemas/types/platform.json" }
 					},
-					"required": ["exec"]
+					"required": ["run"]
 				}
 			}
 		},
 		"open": {
 			"type": "object",
 			"properties": {
-				"rules": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"mime": { "type": "string" },
-							"name": { "type": "string" },
-							"use": {
-								"oneOf": [
-									{ "type": "array", "items": { "type": "string" } },
-									{ "type": "string" }
-								]
-							}
-						},
-						"required": ["use"],
-						"oneOf": [
-							{
-								"required": ["mime"]
-							},
-							{
-								"required": ["name"]
-							}
-						]
-					}
-				}
+				"rules": { "$ref": "#/$defs/open_rules" },
+				"append_rules": { "$ref": "#/$defs/open_rules" },
+				"prepend_rules": { "$ref": "#/$defs/open_rules" }
 			},
 			"additionalProperties": false
 		},
@@ -125,19 +123,28 @@
 			},
 			"additionalProperties": false
 		},
-		"plugins": {
+		"plugin": {
 			"type": "object",
 			"properties": {
-				"preload": {
-					"type": "array",
-					"items": { "type": "string" }
-				}
+				"fetchers": { "$ref": "#/$defs/fetchers" },
+				"prepend_fetchers": { "$ref": "#/$defs/fetchers" },
+				"append_fetchers": { "$ref": "#/$defs/fetchers" },
+				"spotters": { "$ref": "#/$defs/spotters" },
+				"prepend_spotters": { "$ref": "#/$defs/spotters" },
+				"append_spotters": { "$ref": "#/$defs/spotters" },
+				"preloaders": { "$ref": "#/$defs/preloaders" },
+				"prepend_preloaders": { "$ref": "#/$defs/preloaders" },
+				"append_preloaders": { "$ref": "#/$defs/preloaders" },
+				"previewers": { "$ref": "#/$defs/previewers" },
+				"prepend_previewers": { "$ref": "#/$defs/previewers" },
+				"append_previewers": { "$ref": "#/$defs/previewers" }
 			},
 			"additionalProperties": false
 		},
 		"input": {
 			"type": "object",
 			"properties": {
+				"cursor_blink": { "type": "boolean" },
 				"cd_title": { "type": "string" },
 				"cd_origin": {
 					"$ref": "#/$defs/origin"
@@ -145,7 +152,19 @@
 				"cd_offset": {
 					"$ref": "#/$defs/offset"
 				},
-				"create_title": { "type": "string" },
+				"create_title": {
+					"oneOf": [
+						{
+							"type": "array",
+							"items": { "type": "string" },
+							"minItems": 2,
+							"maxItems": 2
+						},
+						{
+							"type": "string"
+						}
+					]
+				},
 				"create_origin": {
 					"$ref": "#/$defs/origin"
 				},
@@ -159,18 +178,11 @@
 				"rename_offset": {
 					"$ref": "#/$defs/offset"
 				},
-				"trash_title": { "type": "string" },
-				"trash_origin": {
+				"filter_title": { "type": "string" },
+				"filter_origin": {
 					"$ref": "#/$defs/origin"
 				},
-				"trash_offset": {
-					"$ref": "#/$defs/offset"
-				},
-				"delete_title": { "type": "string" },
-				"delete_origin": {
-					"$ref": "#/$defs/origin"
-				},
-				"delete_offset": {
+				"filter_offset": {
 					"$ref": "#/$defs/offset"
 				},
 				"find_title": {
@@ -203,8 +215,28 @@
 				},
 				"shell_offset": {
 					"$ref": "#/$defs/offset"
+				}
+			}
+		},
+		"confirm": {
+			"type": "object",
+			"properties": {
+				"trash_title": { "type": "string" },
+				"trash_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"trash_offset": {
+					"$ref": "#/$defs/offset"
+				},
+				"delete_title": { "type": "string" },
+				"delete_origin": {
+					"$ref": "#/$defs/origin"
+				},
+				"delete_offset": {
+					"$ref": "#/$defs/offset"
 				},
 				"overwrite_title": { "type": "string" },
+				"overwrite_content": { "type": "string" },
 				"overwrite_origin": {
 					"$ref": "#/$defs/origin"
 				},
@@ -212,15 +244,17 @@
 					"$ref": "#/$defs/offset"
 				},
 				"quit_title": { "type": "string" },
+				"quit_content": { "type": "string" },
 				"quit_origin": {
 					"$ref": "#/$defs/origin"
 				},
 				"quit_offset": {
 					"$ref": "#/$defs/offset"
 				}
-			}
+			},
+			"additionalProperties": false
 		},
-		"select": {
+		"pick": {
 			"type": "object",
 			"properties": {
 				"open_title": { "type": "string" },
@@ -232,12 +266,14 @@
 				}
 			}
 		},
-		"log": {
+		"which": {
 			"type": "object",
 			"properties": {
-				"enabled": { "type": "boolean" }
-			},
-			"additionalProperties": false
+				"sort_by": { "enum": ["none", "key", "desc"] },
+				"sort_sensitive": { "type": "boolean" },
+				"sort_reverse": { "type": "boolean" },
+				"sort_translit": { "type": "boolean" }
+			}
 		}
 	},
 	"$defs": {
@@ -263,6 +299,115 @@
 			],
 			"minItems": 4,
 			"maxItems": 4
+		},
+		"priority": {
+			"enum": ["low", "normal", "high"]
+		},
+		"fetchers": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": { "type": "string" },
+					"name": { "type": "string" },
+					"mime": { "type": "string" },
+					"run": { "type": "string" },
+					"prio": { "$ref": "#/$defs/priority" }
+				},
+				"oneOf": [
+					{
+						"required": ["mime", "run"]
+					},
+					{
+						"required": ["name", "run"]
+					}
+				]
+			}
+		},
+		"spotters": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": { "type": "string" },
+					"mime": { "type": "string" },
+					"run": { "type": "string" }
+				},
+				"oneOf": [
+					{
+						"required": ["mime", "run"]
+					},
+					{
+						"required": ["name", "run"]
+					}
+				]
+			}
+		},
+		"preloaders": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": { "type": "string" },
+					"mime": { "type": "string" },
+					"run": { "type": "string" },
+					"next": { "type": "boolean" },
+					"prio": { "$ref": "#/$defs/priority" }
+				},
+				"oneOf": [
+					{
+						"required": ["mime", "run"]
+					},
+					{
+						"required": ["name", "run"]
+					}
+				]
+			}
+		},
+		"previewers": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": { "type": "string" },
+					"mime": { "type": "string" },
+					"run": { "type": "string" },
+					"sync": { "type": "boolean" }
+				},
+				"oneOf": [
+					{
+						"required": ["mime", "run"]
+					},
+					{
+						"required": ["name", "run"]
+					}
+				]
+			}
+		},
+		"open_rules": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"mime": { "type": "string" },
+					"name": { "type": "string" },
+					"use": {
+						"oneOf": [
+							{ "type": "array", "items": { "type": "string" } },
+							{ "type": "string" }
+						]
+					}
+				},
+				"required": ["use"],
+				"oneOf": [
+					{
+						"required": ["mime"]
+					},
+					{
+						"required": ["name"]
+					}
+				]
+			}
 		}
 	}
 }
