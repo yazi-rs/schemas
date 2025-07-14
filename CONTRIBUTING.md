@@ -12,7 +12,7 @@
 
 ## Development environment setup
 
-1. This repositories uses [Node.js](https://nodejs.org/en) and [pnpm](https://pnpm.io/) for testing and formatting the schemas. Make sure to have both installed. The Node.js version to use can be found in [`.nvmrc`](./.nvmrc) file.
+1. This repositories uses [Node.js](https://nodejs.org/en) and [pnpm](https://pnpm.io/) for testing and formatting the schemas. Make sure to have both installed. The Node.js version to use can be found in [`.node-version`](./.node-version) file.
 2. Clone this repository and setup the `yazi` submodule (required for running the tests).
 
    ```shell
