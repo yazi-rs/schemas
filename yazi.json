@@ -80,6 +80,7 @@
 			"additionalProperties": false
 		},
 		"opener": {
+			"type": "object",
 			"additionalProperties": {
 				"type": "array",
 				"items": {
