@@ -282,7 +282,9 @@
 					"enum": [
 						"reset",
 						"black",
+						"lightblack",
 						"white",
+						"lightwhite",
 						"red",
 						"lightred",
 						"green",
@@ -296,7 +298,8 @@
 						"cyan",
 						"lightcyan",
 						"gray",
-						"darkgray"
+						"darkgray",
+						"lightgray"
 					]
 				}
 			]
