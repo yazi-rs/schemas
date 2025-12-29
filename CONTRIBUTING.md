@@ -15,11 +15,11 @@
 1. This repositories uses [Node.js](https://nodejs.org/en) and [pnpm](https://pnpm.io/) for testing and formatting the schemas. Make sure to have both installed. The Node.js version to use can be found in [`.node-version`](./.node-version) file.
 2. Clone this repository and setup the `yazi` submodule (required for running the tests).
 
-   ```shell
-   git clone --recurse-submodules https://github.com/yazi-rs/schemas
-   ```
+    ```shell
+    git clone --recurse-submodules https://github.com/yazi-rs/schemas
+    ```
 
-   If you have already cloned the repository without the `--recurse-submodules` argument, you can instead run `git submodule update --init` while in the repository directory to setup the submodules.
+    If you have already cloned the repository without the `--recurse-submodules` argument, you can instead run `git submodule update --init` while in the repository directory to setup the submodules.
 
 3. Run `pnpm install` to install the project's dependencies.
 
@@ -39,9 +39,9 @@ The schemas in this repository use the `$defs` and `$ref` keywords extensively t
 - Order properties of an object in the same order as they appear in the Yazi source code / preset configuration files.
 - Be specific about the constraints of each option. If Yazi has a minimum/maximum value for a number, include that in the schema. This repository has some preset definitions in [`schemas/types/`](./schemas/types/) for the `u8`, `u16`, and `u32` types. You can set an option to use one of these types like this:
 
-  ```json
-  "some_option": { "$ref": "/schemas/types/u8.json" }
-  ```
+    ```json
+    "some_option": { "$ref": "/schemas/types/u8.json" }
+    ```
 
 ### Fixing a schema for the current Yazi version
 
