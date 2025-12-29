@@ -39,7 +39,14 @@
 					"anyOf": [
 						{ "type": "string", "minLength": 1, "maxLength": 20 },
 						{
-							"enum": ["none", "size", "btime", "mtime", "permissions", "owner"]
+							"enum": [
+								"none",
+								"size",
+								"btime",
+								"mtime",
+								"permissions",
+								"owner"
+							]
 						}
 					]
 				},
@@ -61,14 +68,22 @@
 			"properties": {
 				"wrap": { "enum": ["yes", "no"] },
 				"tab_size": { "$ref": "/schemas/types/u8.json" },
-				"max_width": { "$ref": "/schemas/types/u32.json" },
-				"max_height": { "$ref": "/schemas/types/u32.json" },
+				"max_width": { "$ref": "/schemas/types/u16.json" },
+				"max_height": { "$ref": "/schemas/types/u16.json" },
 				"cache_dir": { "type": "string" },
-				"image_delay": { "type": "number", "minimum": 0, "maximum": 100 },
+				"image_delay": {
+					"type": "number",
+					"minimum": 0,
+					"maximum": 100
+				},
 				"image_filter": {
 					"enum": ["nearest", "triangle", "catmull-rom", "lanczos3"]
 				},
-				"image_quality": { "type": "integer", "minimum": 50, "maximum": 90 },
+				"image_quality": {
+					"type": "integer",
+					"minimum": 50,
+					"maximum": 90
+				},
 				"ueberzug_scale": { "type": "number", "minimum": 0 },
 				"ueberzug_offset": {
 					"type": "array",
@@ -237,7 +252,7 @@
 					"$ref": "#/$defs/offset"
 				},
 				"overwrite_title": { "type": "string" },
-				"overwrite_content": { "type": "string" },
+				"overwrite_body": { "type": "string" },
 				"overwrite_origin": {
 					"$ref": "#/$defs/origin"
 				},
@@ -245,7 +260,7 @@
 					"$ref": "#/$defs/offset"
 				},
 				"quit_title": { "type": "string" },
-				"quit_content": { "type": "string" },
+				"quit_body": { "type": "string" },
 				"quit_origin": {
 					"$ref": "#/$defs/origin"
 				},
@@ -296,7 +311,7 @@
 				{ "$ref": "/schemas/types/i16.json" },
 				{ "$ref": "/schemas/types/i16.json" },
 				{ "$ref": "/schemas/types/u16.json", "minimum": 0 },
-				{ "$ref": "/schemas/types/u16.json", "minimum": 3  }
+				{ "$ref": "/schemas/types/u16.json", "minimum": 3 }
 			],
 			"minItems": 4,
 			"maxItems": 4
@@ -310,7 +325,7 @@
 				"type": "object",
 				"properties": {
 					"id": { "type": "string" },
-					"name": { "type": "string" },
+					"url": { "type": "string" },
 					"mime": { "type": "string" },
 					"run": { "type": "string" },
 					"prio": { "$ref": "#/$defs/priority" }
@@ -320,7 +335,7 @@
 						"required": ["mime", "run"]
 					},
 					{
-						"required": ["name", "run"]
+						"required": ["url", "run"]
 					}
 				]
 			}
@@ -330,7 +345,7 @@
 			"items": {
 				"type": "object",
 				"properties": {
-					"name": { "type": "string" },
+					"url": { "type": "string" },
 					"mime": { "type": "string" },
 					"run": { "type": "string" }
 				},
@@ -339,7 +354,7 @@
 						"required": ["mime", "run"]
 					},
 					{
-						"required": ["name", "run"]
+						"required": ["url", "run"]
 					}
 				]
 			}
@@ -349,7 +364,7 @@
 			"items": {
 				"type": "object",
 				"properties": {
-					"name": { "type": "string" },
+					"url": { "type": "string" },
 					"mime": { "type": "string" },
 					"run": { "type": "string" },
 					"next": { "type": "boolean" },
@@ -360,7 +375,7 @@
 						"required": ["mime", "run"]
 					},
 					{
-						"required": ["name", "run"]
+						"required": ["url", "run"]
 					}
 				]
 			}
@@ -370,7 +385,7 @@
 			"items": {
 				"type": "object",
 				"properties": {
-					"name": { "type": "string" },
+					"url": { "type": "string" },
 					"mime": { "type": "string" },
 					"run": { "type": "string" },
 					"sync": { "type": "boolean" }
@@ -380,7 +395,7 @@
 						"required": ["mime", "run"]
 					},
 					{
-						"required": ["name", "run"]
+						"required": ["url", "run"]
 					}
 				]
 			}
@@ -391,7 +406,7 @@
 				"type": "object",
 				"properties": {
 					"mime": { "type": "string" },
-					"name": { "type": "string" },
+					"url": { "type": "string" },
 					"use": {
 						"oneOf": [
 							{ "type": "array", "items": { "type": "string" } },
@@ -405,7 +420,7 @@
 						"required": ["mime"]
 					},
 					{
-						"required": ["name"]
+						"required": ["url"]
 					}
 				]
 			}

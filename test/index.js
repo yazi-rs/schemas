@@ -11,6 +11,7 @@ const schemas = {
 	"keymap-default.toml": "keymap.json",
 	"theme-dark.toml": "theme.json",
 	"theme-light.toml": "theme.json",
+	"vfs-default.toml": "vfs.json",
 };
 
 let errors = 0;

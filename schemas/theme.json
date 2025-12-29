@@ -16,16 +16,19 @@
 			},
 			"additionalProperties": false
 		},
+		"app": {
+			"type": "object",
+			"properties": {
+				"overall": { "$ref": "#/$defs/style" }
+			},
+			"additionalProperties": false
+		},
 		"mgr": {
 			"type": "object",
 			"properties": {
 				"cwd": {
 					"$ref": "#/$defs/style"
 				},
-				"hovered": {
-					"$ref": "#/$defs/style"
-				},
-				"preview_hovered": { "$ref": "#/$defs/style" },
 				"find_keyword": { "$ref": "#/$defs/style" },
 				"find_position": { "$ref": "#/$defs/style" },
 				"symlink_target": { "$ref": "#/$defs/style" },
@@ -42,6 +45,29 @@
 			},
 			"additionalProperties": false
 		},
+		"tabs": {
+			"type": "object",
+			"properties": {
+				"active": { "$ref": "#/$defs/style" },
+				"inactive": { "$ref": "#/$defs/style" },
+				"sep_inner": {
+					"type": "object",
+					"properties": {
+						"open": { "type": "string" },
+						"close": { "type": "string" }
+					},
+					"additionalProperties": false
+				},
+				"sep_outer": {
+					"type": "object",
+					"properties": {
+						"open": { "type": "string" },
+						"close": { "type": "string" }
+					},
+					"additionalProperties": false
+				}
+			}
+		},
 		"mode": {
 			"type": "object",
 			"properties": {
@@ -51,6 +77,23 @@
 				"select_alt": { "$ref": "#/$defs/style" },
 				"unset_main": { "$ref": "#/$defs/style" },
 				"unset_alt": { "$ref": "#/$defs/style" }
+			},
+			"additionalProperties": false
+		},
+		"indicator": {
+			"type": "object",
+			"properties": {
+				"parent": { "$ref": "#/$defs/style" },
+				"current": { "$ref": "#/$defs/style" },
+				"preview": { "$ref": "#/$defs/style" },
+				"padding": {
+					"type": "object",
+					"properties": {
+						"open": { "type": "string" },
+						"close": { "type": "string" }
+					},
+					"additionalProperties": false
+				}
 			},
 			"additionalProperties": false
 		},
@@ -85,29 +128,6 @@
 			},
 			"additionalProperties": false
 		},
-		"tabs": {
-			"type": "object",
-			"properties": {
-				"active": { "$ref": "#/$defs/style" },
-				"inactive": { "$ref": "#/$defs/style" },
-				"sep_inner": {
-					"type": "object",
-					"properties": {
-						"open": { "type": "string" },
-						"close": { "type": "string" }
-					},
-					"additionalProperties": false
-				},
-				"sep_outer": {
-					"type": "object",
-					"properties": {
-						"open": { "type": "string" },
-						"close": { "type": "string" }
-					},
-					"additionalProperties": false
-				}
-			}
-		},
 		"which": {
 			"type": "object",
 			"properties": {
@@ -126,7 +146,7 @@
 			"properties": {
 				"border": { "$ref": "#/$defs/style" },
 				"title": { "$ref": "#/$defs/style" },
-				"content": { "$ref": "#/$defs/style" },
+				"body": { "$ref": "#/$defs/style" },
 				"list": { "$ref": "#/$defs/style" },
 				"btn_yes": { "$ref": "#/$defs/style" },
 				"btn_no": { "$ref": "#/$defs/style" },
@@ -232,7 +252,7 @@
 							"hidden": { "type": "boolean" },
 							"crossed": { "type": "boolean" },
 							"mime": { "type": "string" },
-							"name": { "type": "string" },
+							"url": { "type": "string" },
 							"is": { "type": "string" }
 						},
 						"oneOf": [
@@ -240,7 +260,7 @@
 								"required": ["mime"]
 							},
 							{
-								"required": ["name"]
+								"required": ["url"]
 							}
 						],
 						"additionalProperties": false
@@ -338,7 +358,10 @@
 					"text": { "type": "string" },
 					"fg": { "$ref": "#/$defs/color" }
 				},
-				"anyOf": [{ "required": ["if", "text"] }, { "required": ["if", "fg"] }]
+				"anyOf": [
+					{ "required": ["if", "text"] },
+					{ "required": ["if", "fg"] }
+				]
 			}
 		}
 	}
