@@ -63,6 +63,25 @@
 			},
 			"additionalProperties": false
 		},
+		"files": {
+			"type": "object",
+			"properties": {
+				"excludes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"urn": { "type": "string" },
+							"in": { "type": "string" },
+							"desc": { "type": "string" }
+						},
+						"required": ["urn", "in"],
+						"additionalProperties": false
+					}
+				}
+			},
+			"additionalProperties": false
+		},
 		"preview": {
 			"type": "object",
 			"properties": {
