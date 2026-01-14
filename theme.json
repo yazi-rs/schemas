@@ -255,7 +255,7 @@
 							"url": { "type": "string" },
 							"is": { "type": "string" }
 						},
-						"oneOf": [
+						"anyOf": [
 							{
 								"required": ["mime"]
 							},
