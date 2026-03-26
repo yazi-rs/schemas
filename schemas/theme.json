@@ -272,9 +272,9 @@
 		"icon": {
 			"type": "object",
 			"properties": {
-				"globs": { "$ref": "#/$defs/icon_rules" },
-				"prepend_globs": { "$ref": "#/$defs/icon_rules" },
-				"append_globs": { "$ref": "#/$defs/icon_rules" },
+				"globs": { "$ref": "#/$defs/glob_rules" },
+				"prepend_globs": { "$ref": "#/$defs/glob_rules" },
+				"append_globs": { "$ref": "#/$defs/glob_rules" },
 				"dirs": { "$ref": "#/$defs/icon_rules" },
 				"prepend_dirs": { "$ref": "#/$defs/icon_rules" },
 				"append_dirs": { "$ref": "#/$defs/icon_rules" },
@@ -335,6 +335,18 @@
 				"reversed": { "type": "boolean" },
 				"hidden": { "type": "boolean" },
 				"crossed": { "type": "boolean" }
+			}
+		},
+		"glob_rules": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"url": { "type": "string" },
+					"text": { "type": "string" },
+					"fg": { "$ref": "#/$defs/color" }
+				},
+				"required": ["url", "text"]
 			}
 		},
 		"icon_rules": {
