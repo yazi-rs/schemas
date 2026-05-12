@@ -35,6 +35,7 @@
 				"sort_reverse": { "type": "boolean" },
 				"sort_dir_first": { "type": "boolean" },
 				"sort_translit": { "type": "boolean" },
+				"sort_fallback": { "enum": ["alphabetical", "natural"] },
 				"linemode": {
 					"anyOf": [
 						{ "type": "string", "minLength": 1, "maxLength": 20 },
@@ -58,8 +59,7 @@
 					"items": {
 						"enum": ["click", "scroll", "touch", "move", "drag"]
 					}
-				},
-				"title_format": { "type": "string" }
+				}
 			},
 			"additionalProperties": false
 		},
@@ -123,10 +123,12 @@
 		"tasks": {
 			"type": "object",
 			"properties": {
-				"micro_workers": { "$ref": "/schemas/types/u8.json" },
-				"macro_workers": { "$ref": "/schemas/types/u8.json" },
+				"file_workers": { "$ref": "/schemas/types/u8.json" },
+				"plugin_workers": { "$ref": "/schemas/types/u8.json" },
+				"fetch_workers": { "$ref": "/schemas/types/u8.json" },
+				"preload_workers": { "$ref": "/schemas/types/u8.json" },
+				"process_workers": { "$ref": "/schemas/types/u8.json" },
 				"bizarre_retry": { "$ref": "/schemas/types/u8.json" },
-				"suppress_preload": { "type": "boolean" },
 				"image_alloc": {
 					"$ref": "/schemas/types/u32.json"
 				},
@@ -135,7 +137,8 @@
 					"items": { "$ref": "/schemas/types/u16.json" },
 					"minItems": 2,
 					"maxItems": 2
-				}
+				},
+				"suppress_preload": { "type": "boolean" }
 			},
 			"additionalProperties": false
 		},

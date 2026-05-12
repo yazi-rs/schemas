@@ -2,7 +2,7 @@
 	"$id": "https://yazi-rs.github.io/schemas/theme.json",
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"type": "object",
-	"additionalProperties": false,
+	"additionalProperties": true,
 	"properties": {
 		"$schema": {
 			"default": "https://yazi-rs.github.io/schemas/theme.schema.json",
@@ -36,6 +36,7 @@
 				"marker_cut": { "$ref": "#/$defs/style" },
 				"marker_marked": { "$ref": "#/$defs/style" },
 				"marker_selected": { "$ref": "#/$defs/style" },
+				"marker_symbol": { "type": "string" },
 				"count_copied": { "$ref": "#/$defs/style" },
 				"count_cut": { "$ref": "#/$defs/style" },
 				"count_selected": { "$ref": "#/$defs/style" },
