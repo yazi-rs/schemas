@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd yazi/ >/dev/null 2>&1 || cd ../yazi/ || exit
+cd "$(dirname "${BASH_SOURCE[0]}")/../yazi" || exit
 
 git fetch --tags --force
 git reset --hard "shipped"
