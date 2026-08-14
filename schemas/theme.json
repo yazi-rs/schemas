@@ -132,6 +132,7 @@
 		"which": {
 			"type": "object",
 			"properties": {
+				"border": { "$ref": "#/$defs/style" },
 				"cols": { "type": "integer", "minimum": 1, "maximum": 3 },
 				"mask": { "$ref": "#/$defs/style" },
 				"cand": { "$ref": "#/$defs/style" },
@@ -225,11 +226,10 @@
 		"help": {
 			"type": "object",
 			"properties": {
-				"on": { "$ref": "#/$defs/style" },
-				"run": { "$ref": "#/$defs/style" },
-				"desc": { "$ref": "#/$defs/style" },
-				"hovered": { "$ref": "#/$defs/style" },
-				"footer": { "$ref": "#/$defs/style" }
+				"border": { "$ref": "#/$defs/style" },
+				"chord": { "$ref": "#/$defs/style" },
+				"action": { "$ref": "#/$defs/style" },
+				"hovered": { "$ref": "#/$defs/style" }
 			},
 			"additionalProperties": false
 		},
