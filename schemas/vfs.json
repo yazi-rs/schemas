@@ -25,7 +25,8 @@
 				"kind": { "type": "string" },
 				"run": { "type": "string" }
 			},
-			"required": ["kind", "run"]
+			"required": ["kind", "run"],
+			"additionalProperties": true
 		}
 	}
 }
