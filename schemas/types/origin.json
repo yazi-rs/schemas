@@ -1,0 +1,14 @@
+{
+	"$id": "https://yazi-rs.github.io/schemas/types/platform.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"enum": [
+		"top-left",
+		"top-center",
+		"top-right",
+		"bottom-left",
+		"bottom-center",
+		"bottom-right",
+		"center",
+		"hovered"
+	]
+}

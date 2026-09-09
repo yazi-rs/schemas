@@ -166,7 +166,7 @@
 				"cursor_blink": { "type": "boolean" },
 				"cd_title": { "type": "string" },
 				"cd_origin": {
-					"$ref": "#/$defs/origin"
+					"$ref": "/schemas/types/origin.json"
 				},
 				"cd_offset": {
 					"$ref": "#/$defs/offset"
@@ -185,21 +185,21 @@
 					]
 				},
 				"create_origin": {
-					"$ref": "#/$defs/origin"
+					"$ref": "/schemas/types/origin.json"
 				},
 				"create_offset": {
 					"$ref": "#/$defs/offset"
 				},
 				"rename_title": { "type": "string" },
 				"rename_origin": {
-					"$ref": "#/$defs/origin"
+					"$ref": "/schemas/types/origin.json"
 				},
 				"rename_offset": {
 					"$ref": "#/$defs/offset"
 				},
 				"filter_title": { "type": "string" },
 				"filter_origin": {
-					"$ref": "#/$defs/origin"
+					"$ref": "/schemas/types/origin.json"
 				},
 				"filter_offset": {
 					"$ref": "#/$defs/offset"
@@ -211,14 +211,14 @@
 					"maxItems": 2
 				},
 				"find_origin": {
-					"$ref": "#/$defs/origin"
+					"$ref": "/schemas/types/origin.json"
 				},
 				"find_offset": {
 					"$ref": "#/$defs/offset"
 				},
 				"search_title": { "type": "string" },
 				"search_origin": {
-					"$ref": "#/$defs/origin"
+					"$ref": "/schemas/types/origin.json"
 				},
 				"search_offset": {
 					"$ref": "#/$defs/offset"
@@ -230,7 +230,7 @@
 					"maxItems": 2
 				},
 				"shell_origin": {
-					"$ref": "#/$defs/origin"
+					"$ref": "/schemas/types/origin.json"
 				},
 				"shell_offset": {
 					"$ref": "#/$defs/offset"
@@ -242,14 +242,14 @@
 			"properties": {
 				"trash_title": { "type": "string" },
 				"trash_origin": {
-					"$ref": "#/$defs/origin"
+					"$ref": "/schemas/types/origin.json"
 				},
 				"trash_offset": {
 					"$ref": "#/$defs/offset"
 				},
 				"delete_title": { "type": "string" },
 				"delete_origin": {
-					"$ref": "#/$defs/origin"
+					"$ref": "/schemas/types/origin.json"
 				},
 				"delete_offset": {
 					"$ref": "#/$defs/offset"
@@ -257,7 +257,7 @@
 				"overwrite_title": { "type": "string" },
 				"overwrite_body": { "type": "string" },
 				"overwrite_origin": {
-					"$ref": "#/$defs/origin"
+					"$ref": "/schemas/types/origin.json"
 				},
 				"overwrite_offset": {
 					"$ref": "#/$defs/offset"
@@ -265,7 +265,7 @@
 				"quit_title": { "type": "string" },
 				"quit_body": { "type": "string" },
 				"quit_origin": {
-					"$ref": "#/$defs/origin"
+					"$ref": "/schemas/types/origin.json"
 				},
 				"quit_offset": {
 					"$ref": "#/$defs/offset"
@@ -278,7 +278,7 @@
 			"properties": {
 				"open_title": { "type": "string" },
 				"open_origin": {
-					"$ref": "#/$defs/origin"
+					"$ref": "/schemas/types/origin.json"
 				},
 				"open_offset": {
 					"$ref": "#/$defs/offset"
@@ -296,18 +296,6 @@
 		}
 	},
 	"$defs": {
-		"origin": {
-			"enum": [
-				"top-left",
-				"top-center",
-				"top-right",
-				"bottom-left",
-				"bottom-center",
-				"bottom-right",
-				"center",
-				"hovered"
-			]
-		},
 		"offset": {
 			"type": "array",
 			"items": [

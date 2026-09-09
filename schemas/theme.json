@@ -233,6 +233,8 @@
 			},
 			"additionalProperties": false
 		},
+		"fd": { "$ref": "#/$defs/search" },
+		"rg": { "$ref": "#/$defs/search" },
 		"filetype": {
 			"type": "object",
 			"properties": {
@@ -376,6 +378,26 @@
 					{ "required": ["if", "fg"] }
 				]
 			}
+		},
+		"position": {
+			"type": "object",
+			"properties": {
+				"at": { "$ref": "/schemas/types/origin.json" },
+				"x": { "$ref": "/schemas/types/u16.json" },
+				"y": { "$ref": "/schemas/types/u16.json" },
+				"w": { "$ref": "/schemas/types/u16.json" },
+				"h": { "$ref": "/schemas/types/u16.json" }
+			},
+			"required": ["at"],
+			"additionalProperties": false
+		},
+		"search": {
+			"type": "object",
+			"properties": {
+				"title": "string",
+				"position": { "$ref": "#/$defs/position" }
+			},
+			"additionalProperties": false
 		}
 	}
 }
