@@ -313,7 +313,7 @@
 			"items": [
 				{ "$ref": "/schemas/types/i16.json" },
 				{ "$ref": "/schemas/types/i16.json" },
-				{ "$ref": "/schemas/types/u16.json", "minimum": 0 },
+				{ "$ref": "/schemas/types/u16.json" },
 				{
 					"$ref": "/schemas/types/u16.json",
 					"minimum": 3,
