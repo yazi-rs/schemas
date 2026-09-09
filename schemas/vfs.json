@@ -7,29 +7,26 @@
 		"$schema": {
 			"default": "https://yazi-rs.github.io/schemas/vfs.schema.json",
 			"type": "string"
-		},
-		"services": {
+		}
+	},
+	"patternProperties": {
+		"^[-a-z0-9]{1,20}$": {
 			"type": "object",
 			"patternProperties": {
-				"^[-a-z0-9]{1,20}$": { "$ref": "#/$defs/sftp_service" }
+				"^[-a-z0-9*]{1,20}$": { "$ref": "#/$defs/provider" }
 			},
 			"additionalProperties": false
 		}
 	},
 	"$defs": {
-		"sftp_service": {
+		"provider": {
 			"type": "object",
 			"properties": {
-				"type": { "const": "sftp" },
-				"host": { "type": "string" },
-				"user": { "type": "string" },
-				"port": { "$ref": "/schemas/types/u16.json" },
-				"password": { "type": "string" },
-				"key_file": { "type": "string" },
-				"key_passphrase": { "type": "string" },
-				"identity_agent": { "type": "string" }
+				"kind": { "type": "string" },
+				"run": { "type": "string" }
 			},
-			"required": ["type", "host", "user", "port"]
+			"required": ["kind", "run"],
+			"additionalProperties": true
 		}
 	}
 }
