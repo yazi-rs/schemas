@@ -128,7 +128,6 @@
 				"fetch_workers": { "$ref": "/schemas/types/u8.json" },
 				"preload_workers": { "$ref": "/schemas/types/u8.json" },
 				"process_workers": { "$ref": "/schemas/types/u8.json" },
-				"bizarre_retry": { "$ref": "/schemas/types/u8.json" },
 				"image_alloc": {
 					"$ref": "/schemas/types/u32.json"
 				},
